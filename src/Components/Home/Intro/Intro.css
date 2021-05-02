@@ -1,0 +1,43 @@
+
+element.style {
+    will-change: transform;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+}
+
+.hexagon {
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    text-align: center;
+    height: auto;
+    background: #fff;
+    border-radius: 8px 40px 8px 40px;
+    -webkit-box-shadow: 0 3.4px 2.7px -30px rgb(0 0 0 / 6%), 0 8.2px 8.9px -30px rgb(0 0 0 / 7%), 0 25px 40px -30px rgb(0 0 0 / 20%);
+    box-shadow: 0 3.4px 2.7px -30px rgb(0 0 0 / 6%), 0 8.2px 8.9px -30px rgb(0 0 0 / 7%), 0 25px 40px -30px rgb(0 0 0 / 20%);
+}
+.hexagon:hover{
+    background-color:rgb(230, 252, 247);
+}
+.hexa-1{
+    border: 2px solid #ffc3fe;
+}
+.hexa-2{
+    border: 2px solid #ffe6ba;
+}
+.hexa-3 {
+    border: 2px solid #addaff;
+}
+.hexa-4 {
+    border: 2px solid #ffbaba;
+}
+
+
+.counter-no{
+    font-size: 40px;
+    font-weight: 500;
+    color: #050748;
+}
+.counter-no-p {
+    font-size: 18px;
+    margin: 5px 0 0 0;
+    font-weight: 500;
+}

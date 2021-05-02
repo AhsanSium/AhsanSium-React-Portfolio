@@ -1,0 +1,39 @@
+/* html:not([data-scroll='0']) .navbar{
+ 
+		position: fixed;
+		top: 0;
+		background-color: rgb(228, 34, 34);
+		box-shadow: 0 0 .5em rgba(0, 0, 0, .5);
+	
+	
+} */
+
+.navbar {
+	width: 100%;
+  	min-height: 3em;
+  	background-color: #eee;
+}
+
+html:not([data-scroll='0']) {
+	
+	
+	.navbar {
+		position: fixed;
+		top: 0;
+		background-color: red;
+		box-shadow: 0 0 .5em rgba(0, 0, 0, .5);
+	}
+	
+}
+
+
+// html:not([data-scroll='0']) {
+	
+// 	.navbar {
+// 		background-color: red;
+// 		box-shadow: 0 0 .5em rgba(202, 81, 81, 0.5);
+// 	}
+	
+// }
+
+
