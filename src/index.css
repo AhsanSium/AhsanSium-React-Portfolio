@@ -11,6 +11,29 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.navbar-container{
+
+    background: #fff;
+    -webkit-box-shadow: 0 4px 6px 0 rgb(12 0 46 / 8%);
+    box-shadow: 0 4px 6px 0 rgb(12 0 46 / 8%);
+}
+
+.navbar-container li{
+  padding: 5px;
+  font-size: 18px;
+  margin: 5px 0 0 0;
+  font-weight: 500;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px 0 rgb(12 0 46 / 8%);
+}
+.navbar-container li:hover{
+  background-color: #1fe5ff;
+}
+.navbar-container li a{
+  color: #050748 !important;
+}
+
 .styled-btn{
     font-size: 16px;
     font-weight: 400;
@@ -44,8 +67,9 @@ code {
     border-radius: 100px;
     display: inline-block;
     position: relative;
-    -webkit-box-shadow: 0 10px 15px 0 rgb(233 30 99 / 15%);
-    box-shadow: 0 10px 15px 0 rgb(233 30 99 / 15%);
+    -webkit-box-shadow: 0 10px 15px 0 rgb(0 78 175 / 20%);
+    box-shadow: 0 10px 15px 0 rgb(0 78 175 / 20%);
+    
 }
 .styled-btn-bg{
     background: #ffbd84;
@@ -60,8 +84,8 @@ code {
     background: -moz-linear-gradient(left,#ffbd84 0,#ff1f8e 100%);
     background: -webkit-linear-gradient(left,#ffbd84 0,#ff1f8e 100%);
     background: linear-gradient(to right,#84ffeb 0,#454188 100%);
-    -webkit-box-shadow: 0 10px 15px 0 rgb(175 0 87 / 20%);
-    box-shadow: 0 10px 15px 0 rgb(175 0 87 / 20%);
+    -webkit-box-shadow: 0 10px 15px 0 rgb(0 78 175 / 20%);
+    box-shadow: 0 10px 15px 0 rgb(0 78 175 / 20%);
 }
 
 .counter-no{
@@ -73,4 +97,38 @@ code {
   font-size: 18px;
   margin: 5px 0 0 0;
   font-weight: 500;
+}
+
+.contact-container{
+    background: #d6fffc;
+    background: -moz-linear-gradient(top,#d6fffc 0,#ffeff5 100%);
+    background: -webkit-linear-gradient(top,#d6fffc 0,#ffeff5 100%);
+    background: linear-gradient(to bottom,#d6fffc 0,#ffeff5 100%);
+}
+
+.blog-section img{
+  border-radius: 5px;
+}
+
+.client-caption{
+  background-color: rgba(1, 95, 72, 0.308);
+  border-radius: 10px;
+}
+.client-header{
+    font-family: Poppins,sans-serif;
+    color: #050748;
+    font-weight: 600;
+}
+
+.footer-container{
+    background: #fffdf2;
+    background: -moz-linear-gradient(top,#fffdf2 0,#ffeff5 100%);
+    background: -webkit-linear-gradient(top,#fcf9eb 0,#ebd5dd 100%);
+    background: linear-gradient(to bottom,#fffdf2 0,#ffeff5 100%);
+    padding: 80px 0;
+}
+
+.social-container a{
+    text-decoration: none;
+    color: rgb(0, 54, 54);
 }

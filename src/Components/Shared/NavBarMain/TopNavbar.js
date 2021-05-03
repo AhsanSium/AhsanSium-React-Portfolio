@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ahsan from '../../../images/Ahsan Sium logo.png';
 
 const TopNavbar = () => {
 
@@ -12,10 +13,10 @@ const TopNavbar = () => {
     // }
 
     return (
-        <nav id="navbar" className="navbar navbar-expand-lg navbar-light bg-light  navbar-mobile navfix overflow-hidden ">
-            <div className="container-fluid">
-                            <Link className="navbar-brand" to='/' >
-                                AHSAN SIUM
+        <nav id="navbar" className="navbar navbar-expand-lg navbar-light navbar-mobile navfix sticky-top navbar-container">
+            <div className="container-fluid ">
+                            <Link className="navbar-brand ms-5" to='/' >
+                                <img src={ahsan} alt=""/>
                             </Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

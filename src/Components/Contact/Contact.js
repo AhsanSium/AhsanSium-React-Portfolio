@@ -31,8 +31,6 @@ const Contact = () => {
     return (
         <div>
             <div>
-                <h3>Contact</h3>
-
             </div>
             <div className='container-sm w-75 mt-5'>
                 <h5>Contact with me using the form below!</h5>
@@ -57,7 +55,7 @@ const Contact = () => {
                         <textarea placeholder="What's on your mind ..... " className="form-control" aria-label="With textarea" {...register("message", { required: true })}></textarea>
                     </div>
                     <div className="col-md-12 mt-5">
-                        <button type="button" className="btn btn-success  text-light" type="submit">Submit</button>
+                        <button type="button" className="btn styled-btn styled-btn-bg" type="submit">Submit</button>
                         {/* <input className="form-control " type="submit" /> */}
                     </div>
                 </form>

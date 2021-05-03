@@ -5,6 +5,7 @@ import react from '../../../images/react.png';
 import node from '../../../images/nodejs.png';
 import SkillDetails from './SkillDetails';
 import './Skills.css';
+import { Link } from 'react-router-dom';
 
 const Skills = () => {
 
@@ -37,13 +38,15 @@ const Skills = () => {
     ]
 
     return (
-        <div className='pt-5 pb-5'>
+        <div className='pt-5 pb-5 container'>
             <h3 className='counter-no pb-5'>Skills</h3>
             <div class="container row row-cols-2 row-cols-md-4 g-2 d-flex justify-content-center">
                 {
                     skillsData.map( skill => <SkillDetails skill={skill}></SkillDetails> )
                 }
-                <button className='btn styled-btn-info styled-btn-bg-info mt-5'>Learn More</button>
+                <a href="/about">
+                    <button className='btn styled-btn-info styled-btn-bg-info mt-5'>Learn More</button>
+                </a>
             </div>
         </div>
     );

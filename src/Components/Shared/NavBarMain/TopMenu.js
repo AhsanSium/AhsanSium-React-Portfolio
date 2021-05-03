@@ -8,7 +8,7 @@ const TopMenu = () => {
     
 
 return (
-    <div>
+    <div className='text-center sticky-top'>
        <TopNavbar></TopNavbar>
     </div>
 );

@@ -15,7 +15,7 @@ import TopMenu from './Components/Shared/NavBarMain/TopMenu';
 
 function App() {
   return (
-    <div className="App">
+    <div className="text-center">
 
 
     <Router>
