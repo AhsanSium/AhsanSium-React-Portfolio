@@ -8,10 +8,12 @@ import './App.css';
 import About from "./Components/AboutMe/About";
 import Blog from "./Components/Blog/Blog";
 import Contact from "./Components/Contact/Contact";
+import ContactPage from "./Components/Contact/ContactPage";
 import Home from "./Components/Home/Home";
 import Projects from "./Components/Projects/Projects";
 import Footer from "./Components/Shared/Footer/Footer";
 import TopMenu from './Components/Shared/NavBarMain/TopMenu';
+import ScrollToTop from './Components/Shared/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
 
 
     <Router>
+      <ScrollToTop />
       <TopMenu></TopMenu>
         <Switch>
           <Route path="/about">
@@ -28,7 +31,7 @@ function App() {
             <Projects></Projects>
           </Route>
           <Route path="/contact">
-            <Contact></Contact>
+            <ContactPage></ContactPage>
           </Route>
           <Route path="/blog">
             <Blog></Blog>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ahsan from '../../../images/Ahsan Sium logo.png';
+import ahsan from '../../../images/Ahsan Sium logo2.png';
 
 const TopNavbar = () => {
 

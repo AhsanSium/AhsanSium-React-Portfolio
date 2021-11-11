@@ -50,7 +50,7 @@ const Contact = () => {
                     </div>
                     <div className="col-md-12">
                         <label className="form-label badge rounded bg-primary"> Message </label>
-                        <textarea placeholder="What's on your mind ..... " className="form-control" aria-label="With textarea" {...register("message", { required: true })}></textarea>
+                        <textarea placeholder="What's on your mind ..... " className="form-control pt-5 pb-5" aria-label="With textarea" {...register("message", { required: true })}></textarea>
                     </div>
                     <div className="col-md-12 mt-5">
                         <button className="btn styled-btn styled-btn-bg" type="submit">Submit</button>
