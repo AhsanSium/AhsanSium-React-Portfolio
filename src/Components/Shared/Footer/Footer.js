@@ -5,22 +5,22 @@ import { faFacebookSquare, faLinkedin, faTwitter, faInstagram } from '@fortaweso
 
 const Footer = () => {
     return (
-        <div className='footer-container'>
+        <div className='footer-container mt-5'>
             <div>
             <h3>Follow Me</h3>
             <div className='p-5 social-container'>
-                <a className='' target='_blank' href="https://www.facebook.com/ahsan.sium">
+                <a className='' target='_blank' rel='noreferrer' href="https://www.facebook.com/ahsan.sium">
                 <FontAwesomeIcon className='p-2' icon={faFacebookSquare} size="4x" />
 
                 </a>
-                <a target='_blank' href="https://www.linkedin.com/in/ahsan-sium/">
+                <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/ahsan-sium/">
                 <FontAwesomeIcon className='p-2' icon={faLinkedin} size="4x" />
                 </a>
-                <a target="_blank" href="https://twitter.com/ahsan_sium">
+                <a target="_blank" rel='noreferrer' href="https://twitter.com/ahsan_sium">
                 <FontAwesomeIcon className='p-2' icon={faTwitter} size="4x" />
 
                 </a>
-                <a target="_blank" href="https://www.instagram.com/ahsanulhaque039/">
+                <a target="_blank" rel='noreferrer' href="https://www.instagram.com/ahsanulhaque039/">
                 <FontAwesomeIcon className='p-2' icon={faInstagram} size="4x" />
 
                 </a>
@@ -46,7 +46,7 @@ const Footer = () => {
                 </li>
                 </ul>
             </div>
-            <p className='pt-5 text-dark'>Copyright © 2020-21. All rights reserved. Developed By Ahsan Sium</p>
+            <p className='pt-5 text-dark fw-bold'>Copyright © 2020-21. All rights reserved. Developed By Ahsan Sium</p>
         </div>
     );
 };

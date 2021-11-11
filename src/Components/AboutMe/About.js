@@ -1,43 +1,44 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faMobileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const About = () => {
     return (
-        <div className='container'>
+        <div className='container aboutme-container '>
             <div>
-                <h3>This is About ME</h3>
+                <h3 className='counter-no mt-5'> About ME</h3>
 
             </div>
-            <div className='row'>
-                <div className="col-md-8">
+            <div className='row pt-5 pb-5 aboutme-header d-flex align-items-center '>
+                <div className="col-md-8 ">
                     <h3>MD.AHSANUL HAQUE</h3>
                     <h5>Junior Web Developer</h5>
                 </div>
-                <div className="col-md-4">
-                    <p>+8801521438368</p>
-                    <p>
-                        ahsanulhaquesium@gmail.com
-                    </p>
-                    <p>
-                        <a target='_blank' href="https://linkedin.com/in/ahsan-sium/">
-                            LinkedIn
-                        </a>
-                    </p>
-                    <p>
-                        <a target='_blank' href="https://github.com/AhsanSium">
-                            Github
-                        </a>
-                    </p>
+                <div className="col-md-4 text-start">
+                    <a className='d-block text-dark' href='tel:+8801521438368'>
+                        <FontAwesomeIcon className='me-2' icon={faMobileAlt} size="2x" /><span className='fs-5'>+8801521438368</span>
+                    </a>
+                    <a className='d-block text-dark' href='mailto:ahsanulhaquesium@gmail.com'><FontAwesomeIcon className='me-2' icon={faEnvelope} size="2x" />
+                        <span className='fs-5'>ahsanulhaquesium@gmail.com</span> 
+                    </a>
+                    <a className='text-dark' rel='noreferrer' target='_blank' href="https://github.com/AhsanSium">
+                        <FontAwesomeIcon className='' icon={faGithub} size="2x" />
+                        
+                    </a>
+                    <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/ahsan-sium/">
+                        <FontAwesomeIcon className='ms-4' icon={faLinkedin} size="2x" />
+                    </a>
                 </div>
             </div>
 
-            <div className="row">
+            <div className="row fs-5">
                 <div className="col-md-8">
-                    <div>
-
+                    <div className='shadow p-5 rounded'>
                         <h4>SKILLS</h4>
                         <div>
                             <h5>Proficient with:</h5>
-                            <ul>
+                            <ul className=''>
                                 <li>JavaScript (ES6)</li>
                                 <li>React/Redux</li>
                                 <li>Node.js</li>
@@ -65,8 +66,31 @@ const About = () => {
                         </div>
                     </div>
 
-                    <div>
+                    <div className=' shadow p-5 rounded'>
                         <h4>PROJECTS</h4>
+                        <h5>
+                            Yachts-Voyage: (Full-stack Website)
+                        </h5>
+                        <strong>Features:</strong>
+                        <ul>
+                            <li>Different Admin and User Interace</li>
+                            <li>Private Route</li>
+                            <li>Fully Dynamic Website</li>
+                            <li>Users Can write Review</li>
+                            <li>User Can see Order Status Filtered by User Email</li>
+                            <li>Credit Card Payment Method Added</li>
+                            <li> Full responsive Design.</li>
+                        </ul>
+                        <strong>Technology Used:</strong>
+                        <p>React.js, JavaScript, Node.js, Express.js, MongoDB, Bootstrap Firebase, Stripe ,Heroku.</p>
+                        <a href="/projects">
+
+                        <button className='btn btn-primary'>See more</button>
+                        </a>
+                        </div>
+
+                    <div className='shadow p-5 rounded'>
+                        {/* 
                         <div>
                             <h5>
                                 Yachts-Voyage: (Full-stack Website)
@@ -120,21 +144,11 @@ const About = () => {
                             </ul>
                             <strong>Technology Used:</strong>
                             <p>React.js, JavaScript, Material UI, Font-Awesome, Here Maps</p>
-                        </div>
-                    </div>
+                        </div> */}
 
-                </div>
-                <div className="col-md-4">
-                    <div>
-                        <h4> PROGRAMMING </h4>
-                        JavaScript
-                        C/C++
-                        Python3
-                        Java
-                    </div>
-                    <div>
                         <h4>Highlights</h4>
                         <ul>
+                            
                             <li>Effective Knowledge in Data Structure, Algorithms and OOP.</li>
                             <li>Solved 100+ Practice Problems.</li>
                             <li>2 Years’ Experience in Digital Marketing.</li>
@@ -142,7 +156,23 @@ const About = () => {
                             <li>Fluent in WordPress CMS, Plugins, ElementorPro. WordPress Theme Building</li>
                         </ul>
                     </div>
-                    <div>
+
+                </div>
+                <div className="col-md-4">
+                    <div className='shadow p-5 rounded'>
+                        <h4> PROGRAMMING </h4>
+                        <ul >
+                            <li>JavaScript </li>
+                            <li>C/C++</li>
+                            <li>Python3</li>
+                            <li>Java</li>
+                        </ul>
+                        
+                         
+                         
+                        
+                    </div>
+                    <div className='shadow p-5 rounded'>
                         <h4>Education</h4>
                         <p><strong>Course:</strong>: Full-Stack Web development <br /> Institution: Programming Hero <br />Duration:2021(January-present)</p>
                         <p><strong>BSC:</strong>Computer Science and Engineering
@@ -151,14 +181,16 @@ const About = () => {
                         <p><strong>HSC:</strong>Science <br /> Institution:  Birshreshtha Munshi Abdur 
                         Rouf Public College</p>
                     </div>
-                    <div>
+                    <div className='shadow p-5 rounded'>
                         <h4>Soft Skills</h4>
-                        <ul>
-                            <li>Fluent in English Oral and Written Communication.</li>
-                            <li>Motivated and Ethical nature</li>
-                            <li>Always Prepare to learn new technology and upgrade.</li>
-                            <li>Fully Committed to my job and Responsibility.</li>
-                        </ul>
+                        <div className='text-start'>
+                        <p>Fluent in English Oral and Written Communication. </p>    
+                        <p>Motivated and Ethical nature</p>    
+                        <p>Always Prepare to learn new technology and upgrade. </p>
+                        <p>Fully Committed to my job and Responsibility.</p>    
+
+                        </div>
+                        
                     </div>
                 </div>
             </div>

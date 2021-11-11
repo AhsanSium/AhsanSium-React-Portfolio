@@ -2,8 +2,7 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import './App.css';
 import About from "./Components/AboutMe/About";
@@ -11,6 +10,7 @@ import Blog from "./Components/Blog/Blog";
 import Contact from "./Components/Contact/Contact";
 import Home from "./Components/Home/Home";
 import Projects from "./Components/Projects/Projects";
+import Footer from "./Components/Shared/Footer/Footer";
 import TopMenu from './Components/Shared/NavBarMain/TopMenu';
 
 function App() {
@@ -43,6 +43,7 @@ function App() {
             <h3>404 Error!</h3>
           </Route>
         </Switch>
+        <Footer></Footer>
     </Router>
     </div>
   );

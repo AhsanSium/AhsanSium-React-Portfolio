@@ -1,5 +1,5 @@
 import React from 'react';
-import liveSite from '../../../images/world-wide-web.png';
+import liveSite from '../../../images/internet.png';
 import clientSite from '../../../images/monitor.png';
 import serverSite from '../../../images/server.png';
 import './MyProjectDetails.css';
@@ -22,13 +22,13 @@ const MyProjectDetails = ({data}) => {
                     </div>
                     <div className='row project-details text-muted text-center rounded shadow p-2 '>
                         <div className="col ">
-                            <a href={data.liveSite} target="_blank">
+                            <a href={data.liveSite} target="_blank" rel='noreferrer'>
                             <img src={liveSite} className='' alt=""/>
                             <p>Live Site</p>
                             </a>
                         </div>
                         <div className="col">
-                            <a href={data.codeClient?data.codeClient:'#'} target="_blank">
+                            <a href={data.codeClient?data.codeClient:'#'} target="_blank" rel='noreferrer'>
                                 <img src={clientSite} alt=""/>
                                 <p>Client</p>
                             </a>
@@ -36,7 +36,7 @@ const MyProjectDetails = ({data}) => {
                         {
                             data.codeServer &&
                             <div className="col">
-                                <a href={data.codeServer?data.codeServer:''} target="_blank">
+                                <a href={data.codeServer?data.codeServer:''} target="_blank" rel='noreferrer'>
                                 <img src={serverSite} alt=""/>
                                 <p>Server</p>
                                 </a>

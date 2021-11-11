@@ -1,5 +1,4 @@
 import React from 'react';
-import js from '../../../images/js.png';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import git from '../../../images/git.png';

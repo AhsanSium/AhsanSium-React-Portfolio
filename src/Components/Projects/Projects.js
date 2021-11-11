@@ -10,7 +10,7 @@ const Projects = () => {
     return (
         <div className='pt-5'>
             <div className="">
-                <h3>My Projects</h3>
+                <h3 className='counter-no pb-5'>My Projects</h3>
             </div>
             {
                 ProjectData.map(project => <ProjectDetails project={project}></ProjectDetails> )

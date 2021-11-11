@@ -7,7 +7,7 @@ init("user_3ZA6c1NOdo6f2Hp6nTTA2");
 const Contact = () => {
 
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data, event) => {
         event.preventDefault();
@@ -29,9 +29,7 @@ const Contact = () => {
     }
 
     return (
-        <div>
-            <div>
-            </div>
+        <div className='pt-5'>
             <div className='container-sm w-75 mt-5'>
                 <h5>Contact with me using the form below!</h5>
                 <form className="row g-3" onSubmit={handleSubmit(onSubmit)}>
@@ -55,7 +53,7 @@ const Contact = () => {
                         <textarea placeholder="What's on your mind ..... " className="form-control" aria-label="With textarea" {...register("message", { required: true })}></textarea>
                     </div>
                     <div className="col-md-12 mt-5">
-                        <button type="button" className="btn styled-btn styled-btn-bg" type="submit">Submit</button>
+                        <button className="btn styled-btn styled-btn-bg" type="submit">Submit</button>
                         {/* <input className="form-control " type="submit" /> */}
                     </div>
                 </form>

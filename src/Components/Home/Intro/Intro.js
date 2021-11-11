@@ -21,11 +21,11 @@ const Intro = () => {
                         <div className='mt-5'>
                             <div>
                                 <strong>Follow Me ------</strong>
-                                <a className='text-dark' target='_blank' href="https://github.com/AhsanSium">
+                                <a className='text-dark' target='_blank' rel='noreferrer' href="https://github.com/AhsanSium">
                                     <FontAwesomeIcon className='p-2' icon={faGithub} size="3x" />
 
                                 </a>
-                                <a target='_blank' href="https://www.linkedin.com/in/ahsan-sium/">
+                                <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/ahsan-sium/">
                                     <FontAwesomeIcon className='p-2' icon={faLinkedin} size="3x" />
                                 </a>
                             </div>

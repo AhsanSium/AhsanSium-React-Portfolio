@@ -5,7 +5,6 @@ import react from '../../../images/react.png';
 import node from '../../../images/nodejs.png';
 import SkillDetails from './SkillDetails';
 import './Skills.css';
-import { Link } from 'react-router-dom';
 
 const Skills = () => {
 

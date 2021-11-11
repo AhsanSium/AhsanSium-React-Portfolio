@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../Shared/Footer/Footer';
 import ClientsSay from './ClientsSay/ClientsSay';
 import ContactMe from './ContactMe/ContactMe';
 import HeaderMain from './HeaderMain/HeaderMain';
@@ -20,7 +19,6 @@ const Home = () => {
             <ContactMe></ContactMe>
             <ClientsSay></ClientsSay>
             <MyBlog></MyBlog>
-            <Footer></Footer>
         </div>
     );
 };

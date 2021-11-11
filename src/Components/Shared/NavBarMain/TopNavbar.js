@@ -25,27 +25,27 @@ const TopNavbar = () => {
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
                         <li className="nav-item">
                             {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
-                            <Link className="nav-link" to='/home' >
+                            <Link className="nav-link nav-link-hover" to='/home' >
                                 Home
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/projects' >
+                            <Link className="nav-link nav-link-hover" to='/projects' >
                                 My Projects
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/about' >
+                            <Link className="nav-link nav-link-hover" to='/about' >
                                 About Me
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/blog' >
+                            <Link className="nav-link nav-link-hover" to='/blog' >
                                 Blog
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/contact' >
+                            <Link className="nav-link nav-link-hover" to='/contact' >
                                 Contact
                             </Link>
                         </li>
