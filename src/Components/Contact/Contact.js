@@ -41,8 +41,22 @@ const Contact = () => {
 
                     <div className="col-md-6">
                         <label className="form-label badge rounded bg-primary"> Email</label>
-                        <input placeholder="E-mail" type='email' className="form-control" {...register("email", { required: true, maxLength: 20 }, { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })} />
-                        {errors.email && <span>This field is required</span>}
+                        {/* <input placeholder="E-mail" type='email' className="form-control" {...register("email", { required: true, maxLength: 20 }, { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })} />
+                        {errors.email && <span>This field is required</span>} */}
+
+                        <input
+                            className="form-control"
+                            placeholder="E-mail"
+                            type="email"
+                            {...register("email", {
+                            required: "Required",
+                            pattern: {
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "invalid email address"
+                            }
+                            })}
+                        />
+                        {errors.email && errors.email.message}
                     </div>
                     <div className="col-md-6">
                         <label className="form-label badge rounded bg-primary"> Phone </label>
