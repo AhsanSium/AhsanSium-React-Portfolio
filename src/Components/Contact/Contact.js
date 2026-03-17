@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { init } from 'emailjs-com';
-import emailjs from 'emailjs-com';
-init("user_3ZA6c1NOdo6f2Hp6nTTA2");
+import emailjs from '@emailjs/browser';
+
+emailjs.init({ publicKey: 'user_3ZA6c1NOdo6f2Hp6nTTA2' });
 
 const Contact = () => {
 
