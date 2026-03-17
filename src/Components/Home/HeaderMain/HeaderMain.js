@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ahsanPhoto from '../../../images/Ahsan2.png';
 
 const HeaderMain = () => {
   const [loaded, setLoaded] = useState(false);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const roles = ['Full Stack Developer', 'Backend Developer', 'Cross-Platform Dev', 'Tech Enthusiast'];
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setRoleIndex((prev) => (prev + 1) % roles.length);
+    }, 2200);
+
+    return () => clearInterval(intervalId);
+  }, [roles.length]);
 
   return (
     <section style={{ padding: '80px 0 60px', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
@@ -51,7 +61,7 @@ const HeaderMain = () => {
               backgroundClip: 'text',
               fontFamily: 'var(--font-mono)',
             }}>
-              Full Stack Developer
+              {roles[roleIndex]}
               <span style={{
                 display: 'inline-block', width: 3, height: '1em',
                 background: 'var(--accent-cyan)', marginLeft: 6,
@@ -70,7 +80,7 @@ const HeaderMain = () => {
                 href="https://drive.google.com/file/d/1qIVaSMXn708Cyd87ISc8gTe0I3mlrXq6/view"
                 target="_blank"
                 rel="noreferrer"
-                className="btn-cyber"
+                className="btn-cyber text-white"
               >
                 $ view resume
               </a>
