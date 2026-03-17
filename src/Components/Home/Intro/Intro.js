@@ -1,8 +1,33 @@
-import React from 'react';
-import CountUp from 'react-countup';
+import React, { useEffect, useRef } from 'react';
+import { useCountUp } from 'react-countup';
 import './Intro.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+
+const AnimatedCounter = ({ end, suffix, counterStyle }) => {
+  const ref = useRef(null);
+  const { start, reset } = useCountUp({ ref, start: 0, end, duration: 2.5 });
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { reset(); start(); } },
+      { threshold: 0.4 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [start, reset]);
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
+      <span ref={ref} className="counter-no" style={counterStyle} />
+      <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)' }}>
+        {suffix}
+      </span>
+    </div>
+  );
+};
 
 const STATS = [
   { end: 24,  suffix: '+', label: 'Projects Completed', cls: 'hexa-1', icon: '⚡' },
@@ -73,18 +98,7 @@ const Intro = () => (
               <div key={label} className="col-6">
                 <div className={`hexagon ${cls} p-4`} style={{ height: '100%' }}>
                   <div style={{ fontSize: '1.5rem', marginBottom: 4 }}>{icon}</div>
-                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
-                    <CountUp
-                      className="counter-no"
-                      start={0}
-                      end={end}
-                      duration={2.5}
-                      style={{ fontSize: '2rem' }}
-                    />
-                    <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)' }}>
-                      {suffix}
-                    </span>
-                  </div>
+                  <AnimatedCounter end={end} suffix={suffix} counterStyle={{ fontSize: '2rem' }} />
                   <p style={{
                     color: 'var(--text-muted)',
                     fontSize: '0.8rem',

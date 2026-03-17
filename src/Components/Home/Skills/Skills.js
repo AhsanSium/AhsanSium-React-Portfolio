@@ -3,10 +3,29 @@ import MongoDB from '../../../images/mongoDB.png';
 import express from '../../../images/expressjs.png';
 import react from '../../../images/react.png';
 import node from '../../../images/nodejs.png';
+import golang from '../../../images/golang.svg';
+import postgresql from '../../../images/postgresql.svg';
+import php from '../../../images/php.svg';
+import docker from '../../../images/docker.svg';
 import SkillDetails from './SkillDetails';
 import './Skills.css';
 
 const skillsData = [
+  {
+    name: 'Golang',
+    image: golang,
+    description: 'Concurrent programming, REST APIs, CLI tools, microservices, standard library.',
+  },
+  {
+    name: 'PostgreSQL',
+    image: postgresql,
+    description: 'Relational schemas, joins, indexing, stored procedures, full-text search.',
+  },
+  {
+    name: 'PHP',
+    image: php,
+    description: 'Server-side scripting, Laravel, REST APIs, form handling, session management.',
+  },
   {
     name: 'MongoDB',
     image: MongoDB,
@@ -26,6 +45,11 @@ const skillsData = [
     name: 'Node.js',
     image: node,
     description: 'Modules, HTTP servers, file system, NPM ecosystem, event-driven architecture.',
+  },
+  {
+    name: 'Docker',
+    image: docker,
+    description: 'Containerization, Docker Compose, multi-stage builds, image optimization, networking.',
   },
 ];
 

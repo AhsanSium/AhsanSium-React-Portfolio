@@ -91,14 +91,14 @@ const HeaderMain = () => {
 
             {/* Tech stack tags */}
             <div className="mt-4 d-flex flex-wrap gap-2">
-              {['React', 'Node.js', 'MongoDB', 'Express', 'JavaScript'].map(t => (
+              {['Golang', 'PHP', 'Node.js', 'PostgreSQL', 'Express', 'React.js', 'Docker', 'Git'].map(t => (
                 <span key={t} className="tech-tag">{t}</span>
               ))}
             </div>
           </div>
 
           {/* Photo side */}
-          <div className="col-md-6 text-center">
+          <div className="col-md-6 text-center" style={{ position: 'relative' }}>
             <div style={{
               display: 'inline-block',
               position: 'relative',
@@ -139,7 +139,7 @@ const HeaderMain = () => {
             {/* Floating code snippet decoration */}
             <div style={{
               position: 'absolute',
-              right: '5%',
+              right: '0%',
               top: '15%',
               background: 'var(--glass-bg)',
               backdropFilter: 'blur(12px)',
@@ -150,12 +150,14 @@ const HeaderMain = () => {
               fontSize: '0.7rem',
               color: 'var(--text-muted)',
               pointerEvents: 'none',
-              display: 'none',
-            }} className="d-lg-block">
-              <div><span style={{ color: '#7b2fff' }}>const</span> <span style={{ color: 'var(--accent-cyan)' }}>dev</span> = {'{'}</div>
-              <div>&nbsp;&nbsp;name: <span style={{ color: 'var(--accent-green)' }}>"Ahsan"</span>,</div>
-              <div>&nbsp;&nbsp;role: <span style={{ color: 'var(--accent-green)' }}>"Full Stack"</span></div>
-              <div>{'}'}</div>
+            }} className="d-none d-lg-block">
+              <div className='flex justify-start gap-2'><span style={{ color: '#e626ff' }}>var </span> <span style={{ color: 'var(--accent-cyan)' }}>dev</span> <span style={{ color: '#e626ff' }}> = </span> <span style={{ color: 'var(--accent-cyan)' }}>Developer </span> {'{'}</div>
+              <div className='flex flex-col justify-start items-start gap-x-2 ml-4'>
+                <div className=''>&nbsp;&nbsp;name: <span style={{ color: 'var(--accent-green)' }}>"Ahsan"</span>,</div>
+                <div className=''>&nbsp;&nbsp;role: <span style={{ color: 'var(--accent-green)' }}>"Full Stack"</span></div>
+                <div className=''>&nbsp;&nbsp;personality: <span style={{ color: 'var(--accent-green)' }}>"Cool 😎"</span></div>
+              </div>
+              <div className='flex justify-start'>{'}'}</div>
             </div>
           </div>
 

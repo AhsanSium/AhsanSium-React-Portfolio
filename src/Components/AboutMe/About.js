@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const SKILLS_PROFICIENT = ['JavaScript (ES6)', 'React / Redux', 'Node.js', 'HTML5 & CSS3', 'Express.js', 'MongoDB', 'MySQL'];
-const SKILLS_COMFORTABLE = ['C', 'C++', 'Python 3', 'OOP'];
+const SKILLS_PROFICIENT = ['Golang', 'PHP', 'JavaScript (ES6)', 'Node.js', 'PostgreSQL', 'MySQL'];
+const SKILLS_COMFORTABLE = ['C', 'C++', 'Python 3', 'OOP', 'System Design', 'Docker', 'Git'];
 const SKILLS_ADDITIONAL  = ['SEO (Technical)', 'Digital Marketing', 'WordPress CMS'];
 
 const SkillGroup = ({ label, items, color = 'var(--accent-cyan)' }) => (
@@ -43,7 +43,7 @@ const About = () => (
             </p>
             <h2 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>MD. AHSANUL HAQUE</h2>
             <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', margin: 0 }}>
-              Junior Web Developer
+              Software Engineer | Backend Developer | Tech Enthusiast
             </p>
           </div>
           <div className="col-md-5">
@@ -117,7 +117,7 @@ const About = () => (
               ))}
             </ul>
             <div className="d-flex flex-wrap gap-2 mb-4">
-              {['React.js', 'Node.js', 'MongoDB', 'Express', 'Firebase', 'Stripe'].map(t => <span key={t} className="tech-tag">{t}</span>)}
+              {['Golang', 'Node.js', 'PostgreSQL', 'Express', 'React.js', 'Docker', 'Git'].map(t => <span key={t} className="tech-tag">{t}</span>)}
             </div>
             <a href="/projects" className="btn-cyber-outline" style={{ fontSize: '0.85rem' }}>
               view all projects →
