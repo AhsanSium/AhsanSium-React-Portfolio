@@ -7,6 +7,8 @@ import chrome from '../../../images/chromedevtool.png';
 import firebase from '../../../images/firebase.png';
 import heroku from '../../../images/heroku.png';
 import netlify from '../../../images/netlify.png';
+import postgresql from '../../../images/postgresql.svg';
+import docker from '../../../images/docker.svg';
 import './Programming.css';
 
 const LANGS = [
@@ -16,15 +18,19 @@ const LANGS = [
   { label: 'C++',   value: 65 },
   { label: 'C',     value: 60 },
   { label: 'Java',  value: 50 },
+  { label: 'Go',    value: 70 },
+  { label: 'PHP',   value: 68 },
 ];
 
 const TOOLS = [
-  { img: git,      label: 'Git' },
-  { img: vscode,   label: 'VS Code' },
-  { img: chrome,   label: 'DevTools' },
-  { img: firebase, label: 'Firebase' },
-  { img: heroku,   label: 'Heroku' },
-  { img: netlify,  label: 'Netlify' },
+  { img: git,        label: 'Git' },
+  { img: vscode,     label: 'VS Code' },
+  { img: chrome,     label: 'DevTools' },
+  { img: firebase,   label: 'Firebase' },
+  { img: heroku,     label: 'Heroku' },
+  { img: netlify,    label: 'Netlify' },
+  { img: postgresql, label: 'PostgreSQL' },
+  { img: docker,     label: 'Docker' },
 ];
 
 const progressStyle = (value) => buildStyles({

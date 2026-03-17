@@ -1,38 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SkillDetails = ({ skill }) => (
-  <div className="col">
-    <div className="h-100 skill-card">
-      <div style={{
-        width: 70, height: 70,
-        borderRadius: 14,
-        background: 'var(--glass-bg)',
-        border: '1px solid var(--glass-border)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        margin: '0 auto 16px',
-        boxShadow: '0 0 16px rgba(0,212,255,0.1)',
-      }}>
-        <img
-          src={skill.image}
-          alt={skill.name}
-          style={{ width: 44, height: 44, objectFit: 'contain' }}
-        />
-      </div>
-      <h5 style={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: 8 }}>
+const SkillDetails = ({ skill }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      className="skill-chip"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <img src={skill.image} alt={skill.name} style={{ width: 32, height: 32, objectFit: 'contain', flexShrink: 0 }} />
+      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>
         {skill.name}
-      </h5>
-      <p style={{
-        color: 'var(--text-muted)',
-        fontSize: '0.82rem',
-        fontFamily: 'var(--font-mono)',
-        lineHeight: 1.7,
-        margin: 0,
-        textAlign: 'left',
-      }}>
-        {skill.description}
-      </p>
+      </span>
+      {hovered && (
+        <div className="skill-chip-tooltip">
+          {skill.description}
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 export default SkillDetails;

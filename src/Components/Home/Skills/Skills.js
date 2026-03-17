@@ -53,24 +53,40 @@ const skillsData = [
   },
 ];
 
+const row1 = skillsData.slice(0, 4);
+const row2 = skillsData.slice(4);
+
+const MarqueeRow = ({ items, reverse }) => {
+  // Triplicate for a fully seamless loop regardless of screen width
+  const tripled = [...items, ...items, ...items];
+  return (
+    <div className="marquee-wrapper" style={{ marginBottom: 16 }}>
+      <div className={`marquee-track${reverse ? ' marquee-track-reverse' : ''}`}>
+        {tripled.map((skill, i) => (
+          <SkillDetails key={`${skill.name}-${i}`} skill={skill} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Skills = () => (
-  <section style={{ padding: '60px 0 80px' }}>
+  <section style={{ padding: '60px 0 80px', overflow: 'hidden' }}>
     <div className="container">
       <div className="text-center mb-5">
-        <p className="section-label">// stack.mern</p>
+        <p className="section-label">// stack.core</p>
         <h2 className="section-title">
           Core <span className="gradient-text">Skills</span>
         </h2>
         <div className="neon-line mx-auto" />
       </div>
+    </div>
 
-      <div className="row row-cols-2 row-cols-md-4 g-3">
-        {skillsData.map(skill => (
-          <SkillDetails key={skill.name} skill={skill} />
-        ))}
-      </div>
+    <MarqueeRow items={row1} reverse={false} />
+    <MarqueeRow items={row2} reverse={true} />
 
-      <div className="text-center mt-5">
+    <div className="container">
+      <div className="text-center mt-4">
         <a href="/about" className="btn-cyber-outline">
           view all skills →
         </a>
