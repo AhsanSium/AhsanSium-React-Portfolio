@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ahsanPhoto from '../../../images/Ahsan2.png';
+import ahsanPhoto from '../../../images/ahsan_profile.png';
 
 const HeaderMain = () => {
   const [loaded, setLoaded] = useState(false);
