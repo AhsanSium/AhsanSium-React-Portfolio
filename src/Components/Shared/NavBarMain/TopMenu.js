@@ -1,16 +1,10 @@
-import React from "react";
-import TopNavbar from "./TopNavbar";
+import React from 'react';
+import TopNavbar from './TopNavbar';
 
-
-
-
-const TopMenu = () => {
-    
-
-return (
-    <div className='text-center sticky-top'>
-       <TopNavbar></TopNavbar>
-    </div>
+const TopMenu = () => (
+  <div className="sticky-top" style={{ zIndex: 1000 }}>
+    <TopNavbar />
+  </div>
 );
-};
+
 export default TopMenu;

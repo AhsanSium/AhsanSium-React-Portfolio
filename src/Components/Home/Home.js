@@ -8,19 +8,17 @@ import MyProjects from './MyProjects/MyProjects';
 import Programming from './Programming/Programming';
 import Skills from './Skills/Skills';
 
-const Home = () => {
-    return (
-        <div className='mt-5'>
-            <HeaderMain></HeaderMain>
-            <Intro></Intro>
-            <Skills></Skills>
-            <Programming></Programming>
-            <MyProjects></MyProjects>
-            <ContactMe></ContactMe>
-            <ClientsSay></ClientsSay>
-            <MyBlog></MyBlog>
-        </div>
-    );
-};
+const Home = () => (
+  <main>
+    <HeaderMain />
+    <Intro />
+    <Skills />
+    <Programming />
+    <MyProjects />
+    <ContactMe />
+    <ClientsSay />
+    <MyBlog />
+  </main>
+);
 
 export default Home;

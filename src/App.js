@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,55 +15,30 @@ import TopMenu from './Components/Shared/NavBarMain/TopMenu';
 import ScrollToTop from './Components/Shared/ScrollToTop/ScrollToTop';
 
 function App() {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark' || savedTheme === 'light') {
-      setTheme(savedTheme);
-    }
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'));
-  };
-
   return (
-    <div className="text-center min-h-screen bg-(--app-bg) text-(--app-text) transition-colors duration-300">
-
-      <button
-        type="button"
-        onClick={toggleTheme}
-        className="fixed right-4 top-4 z-50 rounded-full border border-slate-300 bg-white/90 px-4 py-2 text-sm font-semibold text-slate-800 shadow-sm transition hover:shadow-md"
-        style={{
-          backgroundColor: 'var(--surface)',
-          color: 'var(--app-text)',
-          borderColor: 'color-mix(in srgb, var(--app-text) 20%, transparent)'
-        }}
-      >
-        {theme === 'dark' ? 'Switch to Light' : 'Switch to Dark'}
-      </button>
-
-
-    <Router>
-      <ScrollToTop />
-      <TopMenu></TopMenu>
+    <div className="min-vh-100" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
+      <Router>
+        <ScrollToTop />
+        <TopMenu />
         <Routes>
-          <Route path="/about" element={<About />} />
+          <Route path="/about"   element={<About />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<h3>404 Error!</h3>} />
+          <Route path="/blog"    element={<Blog />} />
+          <Route path="/home"    element={<Home />} />
+          <Route path="/"        element={<Home />} />
+          <Route path="*"        element={
+            <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '60vh' }}>
+              <div className="text-center">
+                <h1 className="counter-no mb-3">404</h1>
+                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>// Page not found</p>
+                <a href="/" className="btn-cyber-outline mt-3 d-inline-block">Return Home</a>
+              </div>
+            </div>
+          } />
         </Routes>
-        <Footer></Footer>
-    </Router>
+        <Footer />
+      </Router>
     </div>
   );
 }

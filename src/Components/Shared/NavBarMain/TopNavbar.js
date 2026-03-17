@@ -1,75 +1,101 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import ahsan from '../../../images/Ahsan Sium logo2.png';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode } from '@fortawesome/free-solid-svg-icons';
+
+const NAV_LINKS = [
+  { to: '/',        label: 'Home' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/about',   label: 'About' },
+  { to: '/blog',    label: 'Blog' },
+  { to: '/contact', label: 'Contact' },
+];
 
 const TopNavbar = () => {
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
 
-    // window.onscroll = function() {myFunction()};
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
-    // function myFunction() {
-    //     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-    //         console.log('Scroll');
-    //     }
-    // }
+  return (
+    <nav
+      className={`navbar navbar-expand-lg sticky-top navbar-container${scrolled ? ' scrolled' : ''}`}
+      style={{ transition: 'box-shadow 0.3s ease' }}
+    >
+      <div className="container">
+        {/* Brand */}
+        <Link className="navbar-brand d-flex align-items-center gap-2" to="/" style={{ textDecoration: 'none' }}>
+          <span style={{
+            width: 34, height: 34,
+            borderRadius: 8,
+            background: 'var(--gradient-cyber)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: 14, color: '#fff',
+            boxShadow: '0 0 14px rgba(0,212,255,0.4)',
+          }}>
+            <FontAwesomeIcon icon={faCode} />
+          </span>
+          <span style={{
+            fontFamily: 'var(--font-mono)',
+            fontWeight: 700,
+            fontSize: '1rem',
+            color: 'var(--text-primary)',
+          }}>
+            ahsan<span style={{ color: 'var(--accent-cyan)' }}>.</span>dev
+          </span>
+        </Link>
 
-    return (
-        <nav id="navbar" className="navbar navbar-expand-lg navbar-light navbar-mobile navfix sticky-top navbar-container">
-            <div className="container-fluid ">
-                            <Link className="navbar-brand ms-5" to='/' >
-                                <img src={ahsan} alt=""/>
-                            </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0 me-5">
-                        <li className="nav-item">
-                            {/* <a className="nav-link active" aria-current="page" href="#">Home</a> */}
-                            <Link className="nav-link nav-link-hover" to='/home' >
-                                Home
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link nav-link-hover" to='/projects' >
-                                My Projects
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link nav-link-hover" to='/about' >
-                                About Me
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link nav-link-hover" to='/blog' >
-                                Blog
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link nav-link-hover" to='/contact' >
-                                Contact
-                            </Link>
-                        </li>
-                        {/* <li className="nav-item dropdown">
-                            <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown
-                            </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a className="dropdown-item" href="#">Action</a></li>
-                                <li><a className="dropdown-item" href="#">Another action</a></li>
-                                <li><hr className="dropdown-divider" /></li>
-                                <li><a className="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
-                        </li> */}
-                        
-                    </ul>
-                    {/* <form className="d-flex">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form> */}
-                </div>
-            </div>
-        </nav>
-    );
+        {/* Toggler */}
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarMain"
+          aria-controls="navbarMain"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          style={{ border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}
+        >
+          <span style={{ fontSize: 18 }}>☰</span>
+        </button>
+
+        {/* Links */}
+        <div className="collapse navbar-collapse" id="navbarMain">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+            {NAV_LINKS.map(({ to, label }) => {
+              const isActive = location.pathname === to || (to !== '/' && location.pathname.startsWith(to));
+              return (
+                <li className="nav-item" key={to}>
+                  <Link
+                    className="nav-link"
+                    to={to}
+                    style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.85rem',
+                      fontWeight: 500,
+                      color: isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)',
+                      padding: '6px 14px',
+                      borderRadius: 6,
+                      transition: 'all 0.2s ease',
+                      background: isActive ? 'var(--accent-cyan-dim)' : 'transparent',
+                      border: isActive ? '1px solid rgba(0,212,255,0.2)' : '1px solid transparent',
+                    }}
+                  >
+                    {isActive && <span style={{ color: 'var(--accent-green)', marginRight: 4 }}>▸</span>}
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
 };
 
 export default TopNavbar;

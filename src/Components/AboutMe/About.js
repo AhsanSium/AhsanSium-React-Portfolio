@@ -3,204 +3,187 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faMobileAlt, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
-const About = () => {
-    return (
-        <>
+const SKILLS_PROFICIENT = ['JavaScript (ES6)', 'React / Redux', 'Node.js', 'HTML5 & CSS3', 'Express.js', 'MongoDB', 'MySQL'];
+const SKILLS_COMFORTABLE = ['C', 'C++', 'Python 3', 'OOP'];
+const SKILLS_ADDITIONAL  = ['SEO (Technical)', 'Digital Marketing', 'WordPress CMS'];
 
-                <div className='page-header-section'>
-                    <h3 className='counter-no mt-5 mb-5'> About ME</h3>
+const SkillGroup = ({ label, items, color = 'var(--accent-cyan)' }) => (
+  <div className="mb-4">
+    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color, marginBottom: 10, letterSpacing: '0.05em' }}>
+      // {label}
+    </p>
+    <ul className="list-unstyled">
+      {items.map(item => (
+        <li key={item} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '4px 0', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
+          <span style={{ color }}>▸</span> {item}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-                </div>
+const About = () => (
+  <>
+    {/* Page Header */}
+    <div className="page-header-section">
+      <p className="section-label text-center">// about.exe</p>
+      <h1 style={{ fontFamily: 'var(--font-mono)', fontSize: '2.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
+        About <span style={{ background: 'var(--gradient-cyber)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Me</span>
+      </h1>
+      <div className="neon-line mx-auto" />
+    </div>
 
-            <div className='container aboutme-container '>
-                <div className='row pt-5 pb-5 aboutme-header d-flex align-items-center '>
-                    <div className="col-md-8 ">
-                        <h3>MD.AHSANUL HAQUE</h3>
-                        <h5>Junior Web Developer</h5>
-                    </div>
-                    <div className="col-md-4 text-start">
-                        <a className='d-block text-dark' href='tel:+8801521438368'>
-                            <FontAwesomeIcon className='me-2' icon={faMobileAlt} size="2x" /><span className='fs-5'>+8801521438368</span>
-                        </a>
-                        <a className='d-block text-dark' href='mailto:ahsanulhaquesium@gmail.com'><FontAwesomeIcon className='me-2' icon={faEnvelope} size="2x" />
-                            <span className='fs-5'>ahsanulhaquesium@gmail.com</span> 
-                        </a>
-                        <a className='text-dark' rel='noreferrer' target='_blank' href="https://github.com/AhsanSium">
-                            <FontAwesomeIcon className='' icon={faGithub} size="2x" />
-                            
-                        </a>
-                        <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/ahsan-sium/">
-                            <FontAwesomeIcon className='ms-4' icon={faLinkedin} size="2x" />
-                        </a>
-                    </div>
-                </div>
-
-                <div className="row fs-5">
-                    <div className="col-md-8">
-                        <div className='shadow p-5 rounded'>
-                            <h4>SKILLS</h4>
-                            <div>
-                                <h5>Proficient with:</h5>
-                                <ul className=''>
-                                    <li>JavaScript (ES6)</li>
-                                    <li>React/Redux</li>
-                                    <li>Node.js</li>
-                                    <li>HTML5 CSS3</li>
-                                    <li>Express.js</li>
-                                    <li>MongoDB</li>
-                                    <li>MySQL</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5>Comfortable With:</h5>
-                                <ul>
-                                    <li>C</li>
-                                    <li>C ++</li>
-                                    <li>Python3</li>
-                                    <li>OOP</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h5>Additional Skills:</h5>
-                                <ul>
-                                    <li>SEO(technical)</li>
-                                    <li>Digital Marketing</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div className=' shadow p-5 rounded'>
-                            <h4>PROJECTS</h4>
-                            <h5>
-                                Yachts-Voyage: (Full-stack Website)
-                            </h5>
-                            <strong>Features:</strong>
-                            <ul>
-                                <li>Different Admin and User Interace</li>
-                                <li>Private Route</li>
-                                <li>Fully Dynamic Website</li>
-                                <li>Users Can write Review</li>
-                                <li>User Can see Order Status Filtered by User Email</li>
-                                <li>Credit Card Payment Method Added</li>
-                                <li> Full responsive Design.</li>
-                            </ul>
-                            <strong>Technology Used:</strong>
-                            <p>React.js, JavaScript, Node.js, Express.js, MongoDB, Bootstrap Firebase, Stripe ,Heroku.</p>
-                            <a href="/projects">
-
-                            <button className='btn btn-primary'>See more</button>
-                            </a>
-                            </div>
-
-                        <div className='shadow p-5 rounded'>
-                            {/* 
-                            <div>
-                                <h5>
-                                    Yachts-Voyage: (Full-stack Website)
-                                </h5>
-                                <strong>Live Site    Github Client    GithubServer</strong>
-                                <strong>Features:</strong>
-                                <ul>
-                                    <li>Different Admin and User Interace</li>
-                                    <li>Private Route</li>
-                                    <li>Fully Dynamic Website</li>
-                                    <li>Users Can write Review</li>
-                                    <li>User Can see Order Status Filtered by User Email</li>
-                                    <li>Credit Card Payment Method Added</li>
-                                    <li> Full responsive Design.</li>
-                                </ul>
-                                <strong>Technology Used:</strong>
-                                <p>React.js, JavaScript, Node.js, Express.js, MongoDB, Bootstrap Firebase, Stripe ,Heroku.</p>
-                            </div>
-                            <div>
-                                <h5>
-                                    PhonoMania: (Semi E-commerce Website)
-                                </h5>
-                                <strong>Live Site    Github Client    GithubServer</strong>
-                                <strong>Features:</strong>
-                                <ul>
-                                    <li>User Can Order SmartPhone</li>
-                                    <li>Order Page is secured with Firebase Auth</li>
-                                    <li>Order Information is saved on Database</li>
-                                    <li>Users Can write Review</li>
-                                    <li>User Can see Order Status Filtered by User Email</li>
-                                    <li> User Can See Order Information in Oder's Page</li>
-                                    <li>Admin can add , Remove , Edit Product.</li>
-                                    <li>Full Responsive UI</li>
-                                </ul>
-                                <strong>Technology Used:</strong>
-                                <p>React.js, JavaScript, Node.js, Express.js, MongoDB, Material UI, Firebase ,Heroku.</p>
-                            </div>
-                            <div>
-                                <h5>
-                                    City Transport: (Simple Ride Sharing Website)
-                                </h5>
-                                <strong>Live Site    Github </strong>
-                                <strong>Features:</strong>
-                                <ul>
-                                    <li>Used Google Firebase. User Login and Sign Up</li>
-                                    <li>E-mail Password Login and Sign Up </li>
-                                    <li> Email and Password Validation added</li>
-                                    <li>. Google Sign Up. Private Route Implementation</li>
-                                    <li>Responsive Design</li>
-                                    <li> Added Here Maps. Added Maps Drag and Zoom Functionality</li>
-                                </ul>
-                                <strong>Technology Used:</strong>
-                                <p>React.js, JavaScript, Material UI, Font-Awesome, Here Maps</p>
-                            </div> */}
-
-                            <h4>Highlights</h4>
-                            <ul>
-                                
-                                <li>Effective Knowledge in Data Structure, Algorithms and OOP.</li>
-                                <li>Solved 100+ Practice Problems.</li>
-                                <li>2 Years’ Experience in Digital Marketing.</li>
-                                <li>1.5 Years’ Experience in Amazon Affiliate Marketing and AdSense.</li>
-                                <li>Fluent in WordPress CMS, Plugins, ElementorPro. WordPress Theme Building</li>
-                            </ul>
-                        </div>
-
-                    </div>
-                    <div className="col-md-4">
-                        <div className='shadow p-5 rounded'>
-                            <h4> PROGRAMMING </h4>
-                            <ul >
-                                <li>JavaScript </li>
-                                <li>C/C++</li>
-                                <li>Python3</li>
-                                <li>Java</li>
-                            </ul>
-                            
-                            
-                            
-                            
-                        </div>
-                        <div className='shadow p-5 rounded'>
-                            <h4>Education</h4>
-                            <p><strong>Course:</strong>: Full-Stack Web development <br /> Institution: Programming Hero <br />Duration:2021(January-present)</p>
-                            <p><strong>BSC:</strong>Computer Science and Engineering
-                            <br /> Institution:  Mawlana Bhashani Science and
-                            Technology University <br />Duration:(2018- Present)</p>
-                            <p><strong>HSC:</strong>Science <br /> Institution:  Birshreshtha Munshi Abdur 
-                            Rouf Public College</p>
-                        </div>
-                        <div className='shadow p-5 rounded'>
-                            <h4>Soft Skills</h4>
-                            <div className='text-start'>
-                            <p>Fluent in English Oral and Written Communication. </p>    
-                            <p>Motivated and Ethical nature</p>    
-                            <p>Always Prepare to learn new technology and upgrade. </p>
-                            <p>Fully Committed to my job and Responsibility.</p>    
-
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
+    <div className="container py-5 aboutme-container">
+      {/* Identity row */}
+      <div className="glass-panel p-4 p-md-5 mb-4 aboutme-header">
+        <div className="row align-items-center gy-3">
+          <div className="col-md-7">
+            <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-green)', fontSize: '0.8rem', marginBottom: 4 }}>
+              &gt; whoami
+            </p>
+            <h2 style={{ fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>MD. AHSANUL HAQUE</h2>
+            <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem', margin: 0 }}>
+              Junior Web Developer
+            </p>
+          </div>
+          <div className="col-md-5">
+            <div className="d-flex flex-column gap-2">
+              <a href="tel:+8801521438368" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: 10, transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-cyan)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+              >
+                <FontAwesomeIcon icon={faMobileAlt} style={{ color: 'var(--accent-cyan)', width: 16 }} />
+                +8801521438368
+              </a>
+              <a href="mailto:ahsanulhaquesium@gmail.com" style={{ color: 'var(--text-secondary)', textDecoration: 'none', fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: 10, transition: 'color 0.2s' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-cyan)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-secondary)'}
+              >
+                <FontAwesomeIcon icon={faEnvelope} style={{ color: 'var(--accent-cyan)', width: 16 }} />
+                ahsanulhaquesium@gmail.com
+              </a>
+              <div className="d-flex gap-3 mt-1">
+                <a href="https://github.com/AhsanSium" target="_blank" rel="noreferrer"
+                  style={{ color: 'var(--text-muted)', fontSize: '1.3rem', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-cyan)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                >
+                  <FontAwesomeIcon icon={faGithub} />
+                </a>
+                <a href="https://www.linkedin.com/in/ahsan-sium/" target="_blank" rel="noreferrer"
+                  style={{ color: 'var(--text-muted)', fontSize: '1.3rem', transition: 'color 0.2s' }}
+                  onMouseEnter={e => e.currentTarget.style.color = 'var(--accent-cyan)'}
+                  onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+                >
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
 
-        </>
-    );
-};
+      {/* Main content */}
+      <div className="row g-4">
+        {/* Left column */}
+        <div className="col-md-8">
+          {/* Skills */}
+          <div className="glass-panel p-4 p-md-5 mb-4">
+            <h4 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 24 }}>
+              {'<'} SKILLS {'/>'} 
+            </h4>
+            <SkillGroup label="proficient_with" items={SKILLS_PROFICIENT} color="var(--accent-cyan)" />
+            <SkillGroup label="comfortable_with" items={SKILLS_COMFORTABLE} color="var(--accent-purple)" />
+            <SkillGroup label="additional_skills" items={SKILLS_ADDITIONAL} color="var(--accent-green)" />
+          </div>
+
+          {/* Projects */}
+          <div className="glass-panel p-4 p-md-5 mb-4">
+            <h4 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 20 }}>
+              {'<'} PROJECTS {'/>'} 
+            </h4>
+            <h5 style={{ color: 'var(--accent-cyan)', marginBottom: 8 }}>Yachts-Voyage</h5>
+            <span className="tech-tag mb-3 d-inline-block">Full-Stack</span>
+            <ul className="list-unstyled mb-3">
+              {[
+                'Admin & User interfaces with role-based access',
+                'Private routes with Firebase Auth',
+                'Credit card payment via Stripe',
+                'Full responsive design',
+              ].map(f => (
+                <li key={f} style={{ display: 'flex', gap: 8, padding: '3px 0', color: 'var(--text-secondary)', fontSize: '0.875rem' }}>
+                  <span style={{ color: 'var(--accent-green)' }}>▸</span> {f}
+                </li>
+              ))}
+            </ul>
+            <div className="d-flex flex-wrap gap-2 mb-4">
+              {['React.js', 'Node.js', 'MongoDB', 'Express', 'Firebase', 'Stripe'].map(t => <span key={t} className="tech-tag">{t}</span>)}
+            </div>
+            <a href="/projects" className="btn-cyber-outline" style={{ fontSize: '0.85rem' }}>
+              view all projects →
+            </a>
+          </div>
+
+          {/* Highlights */}
+          <div className="glass-panel p-4 p-md-5">
+            <h4 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 20 }}>
+              {'<'} HIGHLIGHTS {'/>'} 
+            </h4>
+            <ul className="list-unstyled">
+              {[
+                'Effective knowledge in Data Structures, Algorithms & OOP.',
+                'Solved 100+ competitive programming problems.',
+                '2 years experience in Digital Marketing.',
+                '1.5 years in Amazon Affiliate Marketing & AdSense.',
+                'Proficient in WordPress CMS, Plugins & Elementor Pro.',
+              ].map(item => (
+                <li key={item} style={{ display: 'flex', gap: 8, padding: '5px 0', color: 'var(--text-secondary)', fontSize: '0.875rem', borderBottom: '1px solid var(--glass-border)', paddingBottom: 8 }}>
+                  <span style={{ color: 'var(--accent-cyan)', flexShrink: 0 }}>▸</span> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Right column */}
+        <div className="col-md-4">
+          <div className="glass-panel p-4 mb-4">
+            <h5 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 16 }}>// PROGRAMMING</h5>
+            {['JavaScript', 'C / C++', 'Python 3', 'Java'].map(lang => (
+              <div key={lang} className="d-flex align-items-center justify-content-between mb-3">
+                <span style={{ color: 'var(--text-secondary)', fontSize: '0.875rem' }}>{lang}</span>
+                <span className="tech-tag">{lang === 'JavaScript' ? 'expert' : lang === 'C / C++' ? 'good' : 'learning'}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="glass-panel p-4 mb-4">
+            <h5 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 16 }}>// EDUCATION</h5>
+            {[
+              { degree: 'Full-Stack Dev',    inst: 'Programming Hero',  year: '2021' },
+              { degree: 'BSc. CSE',          inst: 'MBSTU',             year: '2018–' },
+              { degree: 'HSC Science',       inst: 'BR Public College', year: '' },
+            ].map(({ degree, inst, year }) => (
+              <div key={degree} className="mb-3 pb-3" style={{ borderBottom: '1px solid var(--glass-border)' }}>
+                <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', margin: '0 0 2px' }}>{degree}</p>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: 0 }}>{inst}</p>
+                {year && <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem', margin: 0 }}>{year}</p>}
+              </div>
+            ))}
+          </div>
+
+          <div className="glass-panel p-4">
+            <h5 style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-mono)', marginBottom: 16 }}>// SOFT SKILLS</h5>
+            {['Fluent English Communication', 'Self-Motivated', 'Quick Learner', 'Team Player', 'Responsible'].map(s => (
+              <p key={s} style={{ display: 'flex', gap: 8, color: 'var(--text-secondary)', fontSize: '0.875rem', margin: '5px 0' }}>
+                <span style={{ color: 'var(--accent-green)' }}>✓</span> {s}
+              </p>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
 
 export default About;

@@ -6,49 +6,53 @@ import node from '../../../images/nodejs.png';
 import SkillDetails from './SkillDetails';
 import './Skills.css';
 
-const Skills = () => {
+const skillsData = [
+  {
+    name: 'MongoDB',
+    image: MongoDB,
+    description: 'CRUD operations, data indexing, aggregation pipelines, Atlas cloud hosting.',
+  },
+  {
+    name: 'Express.js',
+    image: express,
+    description: 'REST APIs, routing, middleware, authentication, file upload handling.',
+  },
+  {
+    name: 'React.js',
+    image: react,
+    description: 'JSX, hooks, context API, React Router, state management, performance.',
+  },
+  {
+    name: 'Node.js',
+    image: node,
+    description: 'Modules, HTTP servers, file system, NPM ecosystem, event-driven architecture.',
+  },
+];
 
-    const skillsData = [
-        {
-            name: 'MongoDB',
-            image:MongoDB,
-            description:`Create, Read, Update, Delete Operations
-            Data secure, Data indexing ....
-            `
-        },
-        {
-            name: 'Express.js',
-            image:express,
-            description:` Express get, Post, Request, Response, Routing, Middleware, File Upload, Template ....
-            `
-        },
-        {
-            name: 'React.js',
-            image:react,
-            description:`JSX, Rendering, Components, Hooks, Context, ReactDom, State ,Routing,  .......
-            `
-        },
-        {
-            name: 'Node.js',
-            image:node,
-            description:`Modules, HTTP, File System, NPM, Events, node.js MongoDB ........
-            `
-        }
-    ]
+const Skills = () => (
+  <section style={{ padding: '60px 0 80px' }}>
+    <div className="container">
+      <div className="text-center mb-5">
+        <p className="section-label">// stack.mern</p>
+        <h2 className="section-title">
+          Core <span className="gradient-text">Skills</span>
+        </h2>
+        <div className="neon-line mx-auto" />
+      </div>
 
-    return (
-        <div className='pt-5 pb-5 container'>
-            <h3 className='counter-no pb-5'>Skills</h3>
-            <div class="container row row-cols-2 row-cols-md-4 g-2 d-flex justify-content-center">
-                {
-                    skillsData.map( skill => <SkillDetails skill={skill}></SkillDetails> )
-                }
-                <a href="/about">
-                    <button className='btn styled-btn-info styled-btn-bg-info mt-5'>Learn More</button>
-                </a>
-            </div>
-        </div>
-    );
-};
+      <div className="row row-cols-2 row-cols-md-4 g-3">
+        {skillsData.map(skill => (
+          <SkillDetails key={skill.name} skill={skill} />
+        ))}
+      </div>
+
+      <div className="text-center mt-5">
+        <a href="/about" className="btn-cyber-outline">
+          view all skills →
+        </a>
+      </div>
+    </div>
+  </section>
+);
 
 export default Skills;

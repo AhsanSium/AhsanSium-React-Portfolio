@@ -1,23 +1,4 @@
-.my-projects{
-    background: #e2f3ff;
-    background: -moz-linear-gradient(top,#e2f3ff 0,#fffbef 100%);
-    background: -webkit-linear-gradient(top,#e2f3ff 0,#fffbef 100%);
-    background: linear-gradient(to bottom,#e2f3ff 0,#fffbef 100%);
-}
-
-
-.project-details img{
-    max-width: 50px;
-}
-.project-details a{
-    text-decoration: none;
-    color: rgb(45, 85, 0);
-}
-
-
-.bg-gradient3 {
-    background: #e2f3ff;
-    background: -moz-linear-gradient(top,#e2f3ff 0,#fffbef 100%);
-    background: -webkit-linear-gradient(top,#e2f3ff 0,#fffbef 100%);
-    background: linear-gradient(to bottom,#e2f3ff 0,#fffbef 100%);
+/* project-details overrides are in global index.css */
+.my-projects {
+  background: linear-gradient(180deg, rgba(0,212,255,0.03) 0%, rgba(123,47,255,0.03) 100%);
 }

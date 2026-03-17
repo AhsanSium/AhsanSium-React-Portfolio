@@ -1,94 +1,129 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 
 emailjs.init({ publicKey: 'user_3ZA6c1NOdo6f2Hp6nTTA2' });
 
 const Contact = () => {
+  const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
+  const [submitted, setSubmitted] = useState(false);
 
-
-    const { register, handleSubmit, formState: { errors } } = useForm();
-
-    const onSubmit = (data, event) => {
-        event.preventDefault();
-        const templateParams = {
-            name: data.fullName,
-            email: data.email,
-            phone: data.phone,
-            message: data.message
-        };
-        emailjs.send('service_frjy9ki', 'template_d92v7na', templateParams)
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Message Sent Success !');
-
-            }, function (error) {
-                console.log('FAILED...', error);
-            });
-        console.log(data);
+  const onSubmit = async (data, event) => {
+    event.preventDefault();
+    const templateParams = {
+      name: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      message: data.message,
+    };
+    try {
+      await emailjs.send('service_frjy9ki', 'template_d92v7na', templateParams);
+      setSubmitted(true);
+      reset();
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (err) {
+      console.error('EmailJS error:', err);
     }
+  };
 
-    return (
-        <div className='pt-5'>
-            <div className='container-sm w-75 mt-5'>
-                <h5>Contact with me using the form below!</h5>
-                <form className="row g-3" onSubmit={handleSubmit(onSubmit)}>
-                    <div className="col-md-12">
-                        <label className="form-label badge rounded bg-primary">Full Name</label>
-                        {/* <input type="email" className="form-control" id="inputEmail4" /> */}
-                        <input placeholder="Full Name" type='text' className="form-control" {...register("fullName", { required: true, maxLength: 20 })} />
-                    </div>
+  const inputStyle = {
+    background: 'var(--glass-bg)',
+    border: '1px solid var(--glass-border)',
+    borderRadius: 8,
+    color: 'var(--text-primary)',
+    fontFamily: 'var(--font-body)',
+    padding: '12px 16px',
+    width: '100%',
+    outline: 'none',
+    transition: 'border-color 0.2s, box-shadow 0.2s',
+  };
 
-                    <div className="col-md-6">
-                        <label className="form-label badge rounded bg-primary"> Email</label>
-                        {/* <input placeholder="E-mail" type='email' className="form-control" {...register("email", { required: true, maxLength: 20 }, { pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })} />
-                        {errors.email && <span>This field is required</span>} */}
+  const labelStyle = {
+    display: 'block',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '0.78rem',
+    color: 'var(--accent-cyan)',
+    letterSpacing: '0.08em',
+    marginBottom: 6,
+  };
 
-                        <input
-                            className="form-control"
-                            placeholder="E-mail"
-                            type="email"
-                            {...register("email", {
-                            required: "Required",
-                            pattern: {
-                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                message: "invalid email address"
-                            }
-                            })}
-                        />
-                        {errors.email && errors.email.message}
-                    </div>
-                    <div className="col-md-6">
-                        <label className="form-label badge rounded bg-primary"> Phone </label>
-                        <input placeholder="Phone No" type="phone" className="form-control" {...register("phone")} />
-                    </div>
-                    <div className="col-md-12">
-                        <label className="form-label badge rounded bg-primary"> Message </label>
-                        <textarea placeholder="What's on your mind ..... " className="form-control pt-5 pb-5" aria-label="With textarea" {...register("message", { required: true })}></textarea>
-                    </div>
-                    <div className="col-md-12 mt-5">
-                        <button className="btn styled-btn styled-btn-bg" type="submit">Submit</button>
-                        {/* <input className="form-control " type="submit" /> */}
-                    </div>
-                </form>
-
-                    {/* <div className="position-fixed bottom-0 end-0 p-3" style={{zIndex:'5'}}>
-                        <div id="liveToast" class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div className="toast-header">
-                                <img src="..." class="rounded me-2" alt="..." />
-                                <strong className="me-auto">Bootstrap</strong>
-                                <small>11 mins ago</small>
-                                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div className="toast-body">
-                                Hello, world! This is a toast message.
-                            </div>
-                        </div>
-                    </div> */}
-            
-            </div>
+  return (
+    <div>
+      {submitted && (
+        <div className="glass-panel mb-4 p-3 text-center" style={{ border: '1px solid var(--accent-green)', color: 'var(--accent-green)', fontFamily: 'var(--font-mono)', fontSize: '0.9rem' }}>
+          ✓ Message sent successfully!
         </div>
-    );
+      )}
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="row g-3">
+          <div className="col-12">
+            <label style={labelStyle}>// full_name</label>
+            <input
+              type="text"
+              placeholder="Your full name"
+              style={inputStyle}
+              onFocus={e => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 0 3px rgba(0,212,255,0.15)'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--glass-border)'; e.target.style.boxShadow = 'none'; }}
+              {...register('fullName', { required: true, maxLength: 50 })}
+            />
+            {errors.fullName && <span style={{ color: '#ff6b6b', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>// required</span>}
+          </div>
+
+          <div className="col-md-6">
+            <label style={labelStyle}>// email</label>
+            <input
+              type="email"
+              placeholder="your@email.com"
+              style={inputStyle}
+              onFocus={e => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 0 3px rgba(0,212,255,0.15)'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--glass-border)'; e.target.style.boxShadow = 'none'; }}
+              {...register('email', {
+                required: 'Required',
+                pattern: { value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i, message: 'Invalid email' },
+              })}
+            />
+            {errors.email && <span style={{ color: '#ff6b6b', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>// {errors.email.message}</span>}
+          </div>
+
+          <div className="col-md-6">
+            <label style={labelStyle}>// phone (optional)</label>
+            <input
+              type="tel"
+              placeholder="+1 234 567 890"
+              style={inputStyle}
+              onFocus={e => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 0 3px rgba(0,212,255,0.15)'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--glass-border)'; e.target.style.boxShadow = 'none'; }}
+              {...register('phone')}
+            />
+          </div>
+
+          <div className="col-12">
+            <label style={labelStyle}>// message</label>
+            <textarea
+              placeholder="What's on your mind..."
+              rows={5}
+              style={{ ...inputStyle, resize: 'vertical' }}
+              onFocus={e => { e.target.style.borderColor = 'var(--accent-cyan)'; e.target.style.boxShadow = '0 0 0 3px rgba(0,212,255,0.15)'; }}
+              onBlur={e => { e.target.style.borderColor = 'var(--glass-border)'; e.target.style.boxShadow = 'none'; }}
+              {...register('message', { required: true })}
+            />
+            {errors.message && <span style={{ color: '#ff6b6b', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>// required</span>}
+          </div>
+
+          <div className="col-12 mt-2">
+            <button
+              type="submit"
+              className="btn-cyber"
+              disabled={isSubmitting}
+              style={{ opacity: isSubmitting ? 0.6 : 1, cursor: isSubmitting ? 'wait' : 'pointer' }}
+            >
+              {isSubmitting ? 'sending...' : '$ send_message()'}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default Contact;

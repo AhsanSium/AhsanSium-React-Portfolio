@@ -4,88 +4,104 @@ import './Intro.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
+const STATS = [
+  { end: 24,  suffix: '+', label: 'Projects Completed', cls: 'hexa-1', icon: '⚡' },
+  { end: 300, suffix: '+', label: 'Problems Solved',    cls: 'hexa-2', icon: '🧩' },
+  { end: 260, suffix: '+', label: 'Code Contributions', cls: 'hexa-3', icon: '💻' },
+  { end: 2,   suffix: '+', label: 'Years Experience',   cls: 'hexa-4', icon: '🚀' },
+];
 
-const Intro = () => {
-    return (
-        <div className='container d-flex justify-content-center align-items-center'>
+const Intro = () => (
+  <section style={{ padding: '60px 0 80px' }}>
+    <div className="container">
+      <div className="row align-items-center gy-5">
 
-            <div className="row d-flex align-items-center">
-                <div className="col-md-7 ">
-                    <div className='w-75 text-start'>
-                        <h6>CREATIVE WEB DEVELOPER</h6>
-                        <h4>MD.Ahsanul Haque Sium</h4>
-                        <p className='text-muted'>As a developer, I love to create new features and items. I want to make my application effective and flawless.
-                        <br />
-                        I'm always positive and motivated. Committed to my job and Responsibility. You'll find me honest hardworking and humble as well. <br />
-                        I'm a lifelong learner, and always happy to adapt myself to new technology and updates.</p>
-                        <div className='mt-5'>
-                            <div>
-                                <strong>Follow Me ------</strong>
-                                <a className='text-dark' target='_blank' rel='noreferrer' href="https://github.com/AhsanSium">
-                                    <FontAwesomeIcon className='p-2' icon={faGithub} size="3x" />
+        {/* Left — about text */}
+        <div className="col-md-7">
+          <p className="section-label">// about.me</p>
+          <h2 className="section-title mb-1">MD. Ahsanul Haque Sium</h2>
+          <div className="neon-line" />
 
-                                </a>
-                                <a target='_blank' rel='noreferrer' href="https://www.linkedin.com/in/ahsan-sium/">
-                                    <FontAwesomeIcon className='p-2' icon={faLinkedin} size="3x" />
-                                </a>
-                            </div>
-                        </div>
+          <p style={{ color: 'var(--text-muted)', lineHeight: 1.85, fontSize: '0.95rem', maxWidth: 480 }}>
+            As a developer, I love creating new features and experiences. I want every application
+            I build to be effective and flawless.
+          </p>
+          <p style={{ color: 'var(--text-muted)', lineHeight: 1.85, fontSize: '0.95rem', maxWidth: 480, marginBottom: 32 }}>
+            I'm always positive, motivated, and committed to my responsibilities.
+            A lifelong learner — always happy to adapt to new technology.
+          </p>
 
-                    </div>
-                </div>
-                <div className="col-md-5 pt-5 counter-no-p">
-                    <div className="row">
-                        <div className="col-6">
-                            <div className='hexagon hexa-1 p-3'>
-                                <CountUp className="counter-no" start={0} end={24} duration={3} />
-                                <br />
-                                <span>+</span>
-                                <p>
-                                    Projects Completed
-                                </p>
-
-                            </div>
-                        </div>
-                        <div className="col-6">
-                            <div className='hexagon hexa-2 p-3'>
-                                <CountUp className="counter-no" start={0} end={300} duration={3} />
-                                <br />
-                                <span>+</span>
-                                <p>
-                                    Problem Solved
-                                    </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
-
-                        <div className="col-6 pt-2">
-                            <div className='hexagon hexa-3 p-3'>
-                                <CountUp className="counter-no" start={0} end={260} duration={3} />
-                                <br />
-                                <span>+</span>
-                                <p>
-                                    Code Contribution
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-6 pt-2">
-                            <div className="hexagon hexa-4 p-3">
-
-                                <CountUp className="counter-no" start={0} end={2} duration={4} />
-                                <br />
-                                <span>+</span>
-                                <p>
-                                    Year's Experience
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+          <div className="d-flex align-items-center gap-3">
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
+              // follow me
+            </span>
+            <a
+              href="https://github.com/AhsanSium"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                color: 'var(--text-muted)',
+                fontSize: '1.6rem',
+                transition: 'color 0.3s, filter 0.3s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-cyan)'; e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(0,212,255,0.5))'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.filter = 'none'; }}
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ahsan-sium/"
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                color: 'var(--text-muted)',
+                fontSize: '1.6rem',
+                transition: 'color 0.3s, filter 0.3s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-cyan)'; e.currentTarget.style.filter = 'drop-shadow(0 0 8px rgba(0,212,255,0.5))'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.filter = 'none'; }}
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </div>
         </div>
-    );
-};
+
+        {/* Right — stat counters */}
+        <div className="col-md-5">
+          <div className="row g-3">
+            {STATS.map(({ end, suffix, label, cls, icon }) => (
+              <div key={label} className="col-6">
+                <div className={`hexagon ${cls} p-4`} style={{ height: '100%' }}>
+                  <div style={{ fontSize: '1.5rem', marginBottom: 4 }}>{icon}</div>
+                  <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'center', gap: 2 }}>
+                    <CountUp
+                      className="counter-no"
+                      start={0}
+                      end={end}
+                      duration={2.5}
+                      style={{ fontSize: '2rem' }}
+                    />
+                    <span style={{ fontSize: '1.2rem', fontFamily: 'var(--font-mono)', color: 'var(--accent-cyan)' }}>
+                      {suffix}
+                    </span>
+                  </div>
+                  <p style={{
+                    color: 'var(--text-muted)',
+                    fontSize: '0.8rem',
+                    fontFamily: 'var(--font-mono)',
+                    margin: '6px 0 0',
+                    lineHeight: 1.4,
+                  }}>
+                    {label}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
 
 export default Intro;
