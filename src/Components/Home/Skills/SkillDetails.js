@@ -8,8 +8,19 @@ const SkillDetails = ({ skill }) => {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img src={skill.image} alt={skill.name} style={{ width: 32, height: 32, objectFit: 'contain', flexShrink: 0 }} />
-      <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap' }}>
+      <img
+        src={skill.image}
+        alt={skill.name}
+        style={{ width: 28, height: 28, objectFit: 'contain', flexShrink: 0 }}
+      />
+      <span style={{
+        fontFamily: 'var(--f-mono)',
+        fontSize: '.85rem',
+        fontWeight: 600,
+        color: 'var(--t1)',
+        whiteSpace: 'nowrap',
+        letterSpacing: '.01em',
+      }}>
         {skill.name}
       </span>
       {hovered && (

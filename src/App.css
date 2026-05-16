@@ -1,6 +1,5 @@
-/* App-level overrides — global glass theme */
 #root {
   position: relative;
   min-height: 100vh;
-  background-color: var(--bg-primary);
+  background-color: var(--bg);
 }

@@ -1,106 +1,150 @@
-import React from 'react';
+import React, { useState } from 'react';
 import client1 from '../../../images/client1.jpg';
 import client2 from '../../../images/client2.jpg';
 import client3 from '../../../images/client3.jpg';
 
-const ClientsSay = () => (
-  <section style={{ padding: '60px 0 80px' }}>
-    <div className="container">
-      <div className="row align-items-center gy-5">
-        {/* Heading side */}
-        <div className="col-md-5">
-          <p className="section-label">// testimonials.json</p>
-          <h2 className="section-title">
-            What Clients <span className="gradient-text">Say</span>
-          </h2>
-          <div className="neon-line" />
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.7, maxWidth: 360 }}>
-            Feedback from people I've had the pleasure of working with on various projects.
-          </p>
-        </div>
+const TESTIMONIALS = [
+  {
+    img: client1, name: 'John Smith', role: 'Product Owner',
+    text: 'Ahsan delivered exceptional work on our web platform. His attention to detail and technical expertise exceeded our expectations every step of the way.',
+  },
+  {
+    img: client2, name: 'Mike Williams', role: 'Startup Founder',
+    text: 'Professional, responsive, and highly skilled. Ahsan built a robust full-stack solution that perfectly matched our requirements and timeline.',
+  },
+  {
+    img: client3, name: 'Peter Johnson', role: 'Tech Lead',
+    text: 'Outstanding developer with a great eye for design. Delivered the project on time with clean, maintainable code that our team could build upon.',
+  },
+];
 
-        {/* Carousel side */}
-        <div className="col-md-7">
-          <div className="glass-panel overflow-hidden">
-            <div
-              id="testimonialCarousel"
-              className="carousel slide"
-              data-bs-ride="carousel"
-            >
-              <div className="carousel-indicators" style={{ bottom: 10 }}>
-                {[0, 1, 2].map(i => (
-                  <button
-                    key={i}
-                    type="button"
-                    data-bs-target="#testimonialCarousel"
-                    data-bs-slide-to={i}
-                    className={i === 0 ? 'active' : ''}
-                    aria-current={i === 0 ? 'true' : undefined}
-                    aria-label={`Slide ${i + 1}`}
-                    style={{
-                      width: 8, height: 8,
-                      borderRadius: '50%',
-                      background: i === 0 ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.3)',
-                      border: 'none',
-                    }}
-                  />
-                ))}
-              </div>
+const QuoteIcon = () => (
+  <svg width="28" height="22" viewBox="0 0 28 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 22V14.3C0 10.7 0.9 7.7 2.7 5.3C4.5 2.9 7.2 1.1 10.8 0L12.6 3C10.2 3.8 8.4 5 7.2 6.6C6 8.2 5.3 10 5.2 12H11V22H0ZM17 22V14.3C17 10.7 17.9 7.7 19.7 5.3C21.5 2.9 24.2 1.1 27.8 0L29.6 3C27.2 3.8 25.4 5 24.2 6.6C23 8.2 22.3 10 22.2 12H28V22H17Z"
+      fill="currentColor" opacity="0.25" />
+  </svg>
+);
 
-              <div className="carousel-inner">
-                {[
-                  { img: client1, name: 'John Smith',      text: 'Ahsan delivered exceptional work on our web platform. His attention to detail and technical expertise exceeded our expectations.' },
-                  { img: client2, name: 'Mike Williams',   text: 'Professional, responsive, and highly skilled. Ahsan built a robust full-stack solution that perfectly matched our requirements.' },
-                  { img: client3, name: 'Peter Johnson',   text: 'Outstanding developer with a great eye for design. Delivered the project on time with clean, maintainable code.' },
-                ].map(({ img, name, text }, i) => (
-                  <div key={name} className={`carousel-item${i === 0 ? ' active' : ''}`}>
-                    <div style={{ position: 'relative' }}>
-                      <img src={img} alt={name} className="d-block w-100" style={{ height: 280, objectFit: 'cover', opacity: 0.4 }} />
-                      <div style={{
-                        position: 'absolute', inset: 0,
-                        background: 'linear-gradient(to top, rgba(8,13,26,0.95) 50%, rgba(8,13,26,0.5) 100%)',
-                        display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-                        padding: '24px 28px',
-                      }}>
-                        <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', fontStyle: 'italic', lineHeight: 1.7, marginBottom: 12 }}>
-                          "{text}"
-                        </p>
-                        <div className="d-flex align-items-center gap-2">
-                          <div style={{
-                            width: 36, height: 36, borderRadius: '50%',
-                            background: 'var(--gradient-cyber)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontFamily: 'var(--font-mono)', fontWeight: 700, fontSize: '0.9rem', color: '#fff',
-                          }}>
-                            {name[0]}
-                          </div>
-                          <div>
-                            <p style={{ margin: 0, fontWeight: 600, color: 'var(--text-primary)', fontSize: '0.9rem' }}>{name}</p>
-                            <p style={{ margin: 0, color: 'var(--accent-cyan)', fontSize: '0.75rem', fontFamily: 'var(--font-mono)' }}>Client</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+const ClientsSay = () => {
+  const [active, setActive] = useState(0);
+  const { name, role, text, img } = TESTIMONIALS[active];
+
+  return (
+    <section style={{ padding: '64px 0 80px', background: 'var(--bg)' }}>
+      <div className="container">
+        <div className="row align-items-start gy-5">
+
+          {/* Left: heading + selector */}
+          <div className="col-md-4">
+            <p className="sec-label">// testimonials</p>
+            <h2 className="sec-heading">
+              What Clients <span style={{ color: 'var(--ac)' }}>Say</span>
+            </h2>
+            <div className="sec-rule" />
+            <p style={{ color: 'var(--t2)', fontSize: '.9rem', lineHeight: 1.7, maxWidth: 340, marginBottom: 28 }}>
+              Feedback from people I've had the pleasure of building with.
+            </p>
+
+            {/* Client selector tabs */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              {TESTIMONIALS.map(({ name, role, img: cImg }, i) => (
+                <button
+                  key={name}
+                  onClick={() => setActive(i)}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    background: active === i ? 'var(--bg-c)' : 'transparent',
+                    border: `1px solid ${active === i ? 'var(--ln-h)' : 'var(--ln)'}`,
+                    borderLeft: `2px solid ${active === i ? 'var(--ac)' : 'transparent'}`,
+                    borderRadius: 8, padding: '10px 14px',
+                    cursor: 'pointer',
+                    transition: 'all .2s',
+                    textAlign: 'left',
+                    width: '100%',
+                  }}
+                >
+                  <div style={{
+                    width: 36, height: 36, borderRadius: '50%',
+                    overflow: 'hidden', flexShrink: 0,
+                    border: `2px solid ${active === i ? 'var(--ac)' : 'var(--ln)'}`,
+                  }}>
+                    <img src={cImg} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                ))}
-              </div>
-
-              <button className="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev"
-                style={{ width: 40 }}>
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next"
-                style={{ width: 40 }}>
-                <span className="carousel-control-next-icon" aria-hidden="true" />
-                <span className="visually-hidden">Next</span>
-              </button>
+                  <div>
+                    <p style={{ margin: 0, fontSize: '.82rem', fontWeight: 700, color: active === i ? 'var(--t1)' : 'var(--t2)', fontFamily: 'var(--f-body)' }}>
+                      {name}
+                    </p>
+                    <p style={{ margin: 0, fontSize: '.7rem', color: 'var(--t3)', fontFamily: 'var(--f-mono)' }}>
+                      {role}
+                    </p>
+                  </div>
+                </button>
+              ))}
             </div>
           </div>
+
+          {/* Right: Quote card */}
+          <div className="col-md-8">
+            <div className="panel p-4 p-md-5" style={{ position: 'relative', minHeight: 280, transition: 'all .3s' }}>
+              {/* Big quote mark */}
+              <div style={{ color: 'var(--ac)', marginBottom: 20 }}>
+                <QuoteIcon />
+              </div>
+
+              <p style={{
+                fontSize: 'clamp(.95rem, 1.8vw, 1.15rem)',
+                color: 'var(--t1)',
+                lineHeight: 1.85,
+                fontStyle: 'italic',
+                marginBottom: 28,
+                fontFamily: 'var(--f-display)',
+                fontWeight: 400,
+              }}>
+                "{text}"
+              </p>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <div style={{
+                  width: 44, height: 44, borderRadius: '50%',
+                  overflow: 'hidden', border: '2px solid var(--ac)',
+                  flexShrink: 0,
+                }}>
+                  <img src={img} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div>
+                  <p style={{ margin: 0, fontWeight: 700, color: 'var(--t1)', fontSize: '.9rem' }}>{name}</p>
+                  <p style={{ margin: 0, fontFamily: 'var(--f-mono)', fontSize: '.7rem', color: 'var(--t3)', letterSpacing: '.04em' }}>
+                    {role}
+                  </p>
+                </div>
+                <div style={{ marginLeft: 'auto' }}>
+                  {/* Pagination dots */}
+                  <div style={{ display: 'flex', gap: 6 }}>
+                    {TESTIMONIALS.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setActive(i)}
+                        style={{
+                          width: i === active ? 20 : 6,
+                          height: 6,
+                          borderRadius: 3,
+                          background: i === active ? 'var(--ac)' : 'var(--ln-h)',
+                          border: 'none', cursor: 'pointer', padding: 0,
+                          transition: 'width .3s, background .2s',
+                        }}
+                        aria-label={`Testimonial ${i + 1}`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ClientsSay;

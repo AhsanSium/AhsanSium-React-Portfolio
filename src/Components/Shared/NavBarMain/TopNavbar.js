@@ -1,18 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCode } from '@fortawesome/free-solid-svg-icons';
+import { useTheme } from '../../../context/ThemeContext';
 
 const NAV_LINKS = [
-  { to: '/',        label: 'Home' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/about',   label: 'About' },
-  { to: '/blog',    label: 'Blog' },
-  { to: '/contact', label: 'Contact' },
+  { to: '/',         label: 'home' },
+  { to: '/projects', label: 'projects' },
+  { to: '/about',    label: 'about' },
+  { to: '/blog',     label: 'blog' },
+  { to: '/contact',  label: 'contact' },
 ];
+
+const SunIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+    <circle cx="12" cy="12" r="5" />
+    <line x1="12" y1="1" x2="12" y2="3" />
+    <line x1="12" y1="21" x2="12" y2="23" />
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+    <line x1="1" y1="12" x2="3" y2="12" />
+    <line x1="21" y1="12" x2="23" y2="12" />
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+  </svg>
+);
+
+const MoonIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+  </svg>
+);
 
 const TopNavbar = () => {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -24,73 +44,101 @@ const TopNavbar = () => {
   return (
     <nav
       className={`navbar navbar-expand-lg sticky-top navbar-container${scrolled ? ' scrolled' : ''}`}
-      style={{ transition: 'box-shadow 0.3s ease' }}
+      style={{ transition: 'box-shadow 0.3s ease', padding: '0 0' }}
     >
-      <div className="container">
+      <div className="container" style={{ height: 64, display: 'flex', alignItems: 'center' }}>
+
         {/* Brand */}
-        <Link className="navbar-brand d-flex align-items-center gap-2" to="/" style={{ textDecoration: 'none' }}>
+        <Link
+          className="navbar-brand"
+          to="/"
+          style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}
+        >
           <span style={{
-            width: 34, height: 34,
-            borderRadius: 8,
-            background: 'var(--gradient-cyber)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            fontSize: 14, color: '#fff',
-            boxShadow: '0 0 14px rgba(0,212,255,0.4)',
-          }}>
-            <FontAwesomeIcon icon={faCode} />
-          </span>
-          <span style={{
-            fontFamily: 'var(--font-mono)',
+            fontFamily: 'var(--f-mono)',
             fontWeight: 700,
             fontSize: '1rem',
-            color: 'var(--text-primary)',
+            color: 'var(--t1)',
+            letterSpacing: '-0.01em',
           }}>
-            ahsan<span style={{ color: 'var(--accent-cyan)' }}>.</span>dev
+            ahsan<span style={{ color: 'var(--ac)' }}>.</span>sium
           </span>
         </Link>
 
-        {/* Toggler */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarMain"
-          aria-controls="navbarMain"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-          style={{ border: '1px solid var(--glass-border)', color: 'var(--text-secondary)' }}
-        >
-          <span style={{ fontSize: 18 }}>☰</span>
-        </button>
+        {/* Mobile: theme btn + toggler */}
+        <div className="d-flex d-lg-none align-items-center gap-2 ms-auto">
+          <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+            {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+          </button>
+          <button
+            className="navbar-toggler border-0 p-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMain"
+            aria-controls="navbarMain"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style={{
+              background: 'var(--bg-s)',
+              border: '1px solid var(--ln)',
+              borderRadius: 6,
+              padding: '6px 10px',
+              color: 'var(--t2)',
+            }}
+          >
+            <span style={{ fontSize: 16, lineHeight: 1 }}>☰</span>
+          </button>
+        </div>
 
-        {/* Links */}
+        {/* Desktop nav */}
         <div className="collapse navbar-collapse" id="navbarMain">
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+          <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center gap-1">
             {NAV_LINKS.map(({ to, label }) => {
-              const isActive = location.pathname === to || (to !== '/' && location.pathname.startsWith(to));
+              const isActive = to === '/'
+                ? location.pathname === '/' || location.pathname === '/home'
+                : location.pathname.startsWith(to);
               return (
                 <li className="nav-item" key={to}>
                   <Link
                     className="nav-link"
                     to={to}
                     style={{
-                      fontFamily: 'var(--font-mono)',
-                      fontSize: '0.85rem',
+                      fontFamily: 'var(--f-mono)',
+                      fontSize: '0.82rem',
                       fontWeight: 500,
-                      color: isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)',
-                      padding: '6px 14px',
-                      borderRadius: 6,
-                      transition: 'all 0.2s ease',
-                      background: isActive ? 'var(--accent-cyan-dim)' : 'transparent',
-                      border: isActive ? '1px solid rgba(0,212,255,0.2)' : '1px solid transparent',
+                      color: isActive ? 'var(--t1)' : 'var(--t2)',
+                      padding: '6px 12px',
+                      borderRadius: 4,
+                      position: 'relative',
+                      transition: 'color 0.2s',
+                      letterSpacing: '0.01em',
                     }}
                   >
-                    {isActive && <span style={{ color: 'var(--accent-green)', marginRight: 4 }}>▸</span>}
+                    {isActive && (
+                      <span style={{
+                        position: 'absolute',
+                        bottom: 1,
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: 4,
+                        height: 4,
+                        borderRadius: '50%',
+                        background: 'var(--ac)',
+                        display: 'block',
+                      }} />
+                    )}
                     {label}
                   </Link>
                 </li>
               );
             })}
+
+            {/* Theme toggle — desktop */}
+            <li className="nav-item d-none d-lg-flex align-items-center ms-2">
+              <button className="theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
+                {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+              </button>
+            </li>
           </ul>
         </div>
       </div>

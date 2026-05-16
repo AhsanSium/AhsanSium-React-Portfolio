@@ -3,17 +3,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt, faCode } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-const ProjectDetails = ({ project }) => {
+const ProjectDetails = ({ project, index }) => {
   const { id, img1, img2, img3, name, features, description, technology, liveSite, codeClient, codeServer } = project;
+  const num = String(index + 1).padStart(2, '0');
 
   return (
-    <div className="container mb-5">
-      <div className="glass-panel p-4 p-md-5">
-        <div className="row align-items-start gy-4">
-          {/* Carousel */}
-          <div className="col-md-7">
-            <div id={id} className="carousel slide" data-bs-ride="carousel">
-              <div className="carousel-indicators">
+    <div className="container mb-4">
+      <div className="panel overflow-hidden">
+        <div className="row g-0 align-items-stretch">
+
+          {/* Carousel side */}
+          <div className={`col-md-7 ${index % 2 !== 0 ? 'order-md-2' : ''}`}>
+            <div
+              id={id}
+              className="carousel slide h-100"
+              data-bs-ride="carousel"
+              style={{ minHeight: 300 }}
+            >
+              <div className="carousel-indicators" style={{ bottom: 12 }}>
                 {[0, 1, 2].map(i => (
                   <button
                     key={i}
@@ -24,68 +31,131 @@ const ProjectDetails = ({ project }) => {
                     aria-current={i === 0 ? 'true' : undefined}
                     aria-label={`Slide ${i + 1}`}
                     style={{
-                      width: 8, height: 8, borderRadius: '50%', border: 'none',
-                      background: i === 0 ? 'var(--accent-cyan)' : 'rgba(255,255,255,0.3)',
+                      width: i === 0 ? 20 : 6, height: 6,
+                      borderRadius: 3, border: 'none',
+                      background: i === 0 ? 'var(--ac)' : 'rgba(255,255,255,0.35)',
+                      transition: 'width .3s',
                     }}
                   />
                 ))}
               </div>
-              <div className="carousel-inner" style={{ borderRadius: 10, overflow: 'hidden', border: '1px solid var(--glass-border)' }}>
+              <div className="carousel-inner h-100">
                 {[img1, img2, img3].map((img, i) => (
-                  <div key={i} className={`carousel-item${i === 0 ? ' active' : ''}`}>
-                    <img src={img} className="d-block w-100" alt={`${name} screenshot ${i + 1}`} style={{ maxHeight: 320, objectFit: 'cover' }} />
+                  <div key={i} className={`carousel-item h-100${i === 0 ? ' active' : ''}`}>
+                    <img
+                      src={img}
+                      className="d-block w-100 h-100"
+                      alt={`${name} screenshot ${i + 1}`}
+                      style={{ objectFit: 'cover', maxHeight: 380 }}
+                    />
                   </div>
                 ))}
               </div>
-              <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev">
+              <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev" style={{ width: 44 }}>
                 <span className="carousel-control-prev-icon" aria-hidden="true" />
                 <span className="visually-hidden">Previous</span>
               </button>
-              <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next">
+              <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next" style={{ width: 44 }}>
                 <span className="carousel-control-next-icon" aria-hidden="true" />
                 <span className="visually-hidden">Next</span>
               </button>
             </div>
           </div>
 
-          {/* Details */}
-          <div className="col-md-5 ps-md-4">
-            <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--accent-green)', fontSize: '0.75rem', marginBottom: 4 }}>// project</p>
-            <h3 style={{ color: 'var(--text-primary)', fontWeight: 700, marginBottom: 6 }}>{name}</h3>
-            <p style={{ color: 'var(--accent-cyan)', fontFamily: 'var(--font-mono)', fontSize: '0.85rem', marginBottom: 14 }}>{description}</p>
+          {/* Details side */}
+          <div
+            className={`col-md-5 ${index % 2 !== 0 ? 'order-md-1' : ''}`}
+            style={{
+              padding: '32px 28px',
+              borderLeft: index % 2 === 0 ? '1px solid var(--ln)' : 'none',
+              borderRight: index % 2 !== 0 ? '1px solid var(--ln)' : 'none',
+              display: 'flex', flexDirection: 'column', justifyContent: 'flex-start',
+            }}
+          >
+            <p style={{
+              fontFamily: 'var(--f-mono)', fontSize: '.68rem',
+              color: 'var(--t3)', textTransform: 'uppercase',
+              letterSpacing: '.1em', marginBottom: 8,
+            }}>
+              {num} // project
+            </p>
 
-            <div className="mb-4">
-              <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: 8 }}>// features</p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', lineHeight: 1.75 }}>{features}</p>
+            <h3 style={{
+              fontFamily: 'var(--f-display)',
+              fontSize: 'clamp(1.3rem, 2vw, 1.65rem)',
+              fontWeight: 800, color: 'var(--t1)',
+              lineHeight: 1.2, marginBottom: 8,
+            }}>
+              {name}
+            </h3>
+
+            <p style={{
+              fontFamily: 'var(--f-mono)', fontSize: '.78rem',
+              color: 'var(--ac)', marginBottom: 16, letterSpacing: '.03em',
+            }}>
+              {description}
+            </p>
+
+            <div style={{ marginBottom: 16 }}>
+              <p style={{
+                fontFamily: 'var(--f-mono)', color: 'var(--t3)',
+                fontSize: '.66rem', textTransform: 'uppercase',
+                letterSpacing: '.08em', marginBottom: 8,
+              }}>
+                // features
+              </p>
+              <p style={{ color: 'var(--t2)', fontSize: '.85rem', lineHeight: 1.75 }}>{features}</p>
             </div>
 
             {technology && (
-              <div className="mb-4">
-                <p style={{ fontFamily: 'var(--font-mono)', color: 'var(--text-muted)', fontSize: '0.75rem', marginBottom: 8 }}>// tech_stack</p>
-                <div className="d-flex flex-wrap gap-1">
+              <div style={{ marginBottom: 20 }}>
+                <p style={{
+                  fontFamily: 'var(--f-mono)', color: 'var(--t3)',
+                  fontSize: '.66rem', textTransform: 'uppercase',
+                  letterSpacing: '.08em', marginBottom: 8,
+                }}>
+                  // tech_stack
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', margin: '-2px' }}>
                   {technology.split(',').map(t => t.trim()).filter(Boolean).map(t => (
-                    <span key={t} className="tech-tag">{t}</span>
+                    <span key={t} className="tag">{t}</span>
                   ))}
                 </div>
               </div>
             )}
 
-            <div className="d-flex flex-wrap gap-2 project-details mt-3">
-              <a href={liveSite} target="_blank" rel="noreferrer" className="btn-cyber" style={{ padding: '8px 14px', fontSize: '0.8rem' }}>
-                <FontAwesomeIcon icon={faExternalLinkAlt} className="me-2" />Live
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 'auto', paddingTop: 8 }} className="project-details">
+              <a
+                href={liveSite} target="_blank" rel="noreferrer"
+                className="btn-prime"
+                style={{ padding: '7px 14px', fontSize: '.78rem' }}
+              >
+                <FontAwesomeIcon icon={faExternalLinkAlt} style={{ fontSize: '.75rem' }} />
+                Live
               </a>
               {codeClient && (
-                <a href={codeClient} target="_blank" rel="noreferrer" className="btn-cyber-outline" style={{ padding: '7px 12px', fontSize: '0.8rem' }}>
-                  <FontAwesomeIcon icon={faGithub} className="me-2" />Client
+                <a
+                  href={codeClient} target="_blank" rel="noreferrer"
+                  className="btn-outline"
+                  style={{ padding: '6px 12px', fontSize: '.78rem' }}
+                >
+                  <FontAwesomeIcon icon={faGithub} style={{ fontSize: '.8rem' }} />
+                  Client
                 </a>
               )}
               {codeServer && (
-                <a href={codeServer} target="_blank" rel="noreferrer" className="btn-cyber-outline" style={{ padding: '7px 12px', fontSize: '0.8rem' }}>
-                  <FontAwesomeIcon icon={faCode} className="me-2" />Server
+                <a
+                  href={codeServer} target="_blank" rel="noreferrer"
+                  className="btn-outline"
+                  style={{ padding: '6px 12px', fontSize: '.78rem' }}
+                >
+                  <FontAwesomeIcon icon={faCode} style={{ fontSize: '.8rem' }} />
+                  Server
                 </a>
               )}
             </div>
           </div>
+
         </div>
       </div>
     </div>

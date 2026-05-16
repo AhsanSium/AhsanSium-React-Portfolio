@@ -4,16 +4,32 @@ import ProjectDetails from './ProjectDetails/ProjectDetails';
 
 const Projects = () => (
   <>
-    <div className="page-header-section">
-      <p className="section-label text-center">// projects.all()</p>
-      <h1 style={{ fontFamily: 'var(--font-mono)', fontSize: '2.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>
-        My <span style={{ background: 'var(--gradient-cyber)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Projects</span>
-      </h1>
-      <div className="neon-line mx-auto" />
+    {/* Page header */}
+    <div style={{
+      padding: '72px 0 48px',
+      background: 'var(--bg-s)',
+      borderBottom: '1px solid var(--ln)',
+    }}>
+      <div className="container">
+        <p className="sec-label">// projects.all()</p>
+        <h1 style={{
+          fontFamily: 'var(--f-display)',
+          fontSize: 'clamp(2.2rem, 5vw, 3.4rem)',
+          fontWeight: 900, color: 'var(--t1)',
+          lineHeight: 1.1, marginBottom: 12,
+          letterSpacing: '-0.02em',
+        }}>
+          My <span style={{ color: 'var(--ac)' }}>Projects</span>
+        </h1>
+        <p style={{ color: 'var(--t2)', fontSize: '.95rem', maxWidth: 480, lineHeight: 1.75 }}>
+          {ProjectData.length} projects built across full-stack, backend, and front-end domains.
+        </p>
+      </div>
     </div>
-    <div className="py-5">
-      {ProjectData.map(project => (
-        <ProjectDetails key={project.id} project={project} />
+
+    <div style={{ padding: '48px 0 80px' }}>
+      {ProjectData.map((project, i) => (
+        <ProjectDetails key={project.id} project={project} index={i} />
       ))}
     </div>
   </>

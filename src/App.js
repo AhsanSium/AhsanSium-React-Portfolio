@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import './App.css';
+import { ThemeProvider } from './context/ThemeContext';
 import About from "./Components/AboutMe/About";
 import Blog from "./Components/Blog/Blog";
 import ContactPage from "./Components/Contact/ContactPage";
@@ -16,30 +17,32 @@ import ScrollToTop from './Components/Shared/ScrollToTop/ScrollToTop';
 
 function App() {
   return (
-    <div className="min-vh-100" style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--text-primary)' }}>
-      <Router>
-        <ScrollToTop />
-        <TopMenu />
-        <Routes>
-          <Route path="/about"   element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/blog"    element={<Blog />} />
-          <Route path="/home"    element={<Home />} />
-          <Route path="/"        element={<Home />} />
-          <Route path="*"        element={
-            <div className="d-flex align-items-center justify-content-center" style={{ minHeight: '60vh' }}>
-              <div className="text-center">
-                <h1 className="counter-no mb-3">404</h1>
-                <p style={{ color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>// Page not found</p>
-                <a href="/" className="btn-cyber-outline mt-3 d-inline-block">Return Home</a>
+    <ThemeProvider>
+      <div style={{ backgroundColor: 'var(--bg)', color: 'var(--t1)', minHeight: '100vh' }}>
+        <Router>
+          <ScrollToTop />
+          <TopMenu />
+          <Routes>
+            <Route path="/about"    element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact"  element={<ContactPage />} />
+            <Route path="/blog"     element={<Blog />} />
+            <Route path="/home"     element={<Home />} />
+            <Route path="/"         element={<Home />} />
+            <Route path="*"         element={
+              <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center' }}>
+                  <p style={{ fontFamily: 'var(--f-mono)', color: 'var(--ac)', fontSize: '5rem', fontWeight: 800, margin: 0, lineHeight: 1 }}>404</p>
+                  <p style={{ color: 'var(--t3)', fontFamily: 'var(--f-mono)', margin: '12px 0 24px' }}>// page_not_found</p>
+                  <a href="/" className="btn-outline">← return_home()</a>
+                </div>
               </div>
-            </div>
-          } />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+            } />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </ThemeProvider>
   );
 }
 
