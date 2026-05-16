@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Dark rounded background -->
+  <rect width="64" height="64" rx="14" fill="#0d0d11"/>
+
+  <!-- "A" in cream -->
+  <text
+    x="9" y="47"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    font-weight="900"
+    fill="#ede9df"
+  >A</text>
+
+  <!-- "S" in electric lime -->
+  <text
+    x="35" y="47"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="38"
+    font-weight="900"
+    fill="#b8fc44"
+  >S</text>
+
+  <!-- Lime accent underline -->
+  <rect x="8" y="54" width="48" height="3" rx="1.5" fill="#b8fc44"/>
+</svg>
