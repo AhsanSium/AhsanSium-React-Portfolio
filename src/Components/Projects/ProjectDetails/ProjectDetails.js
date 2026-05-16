@@ -51,12 +51,20 @@ const ProjectDetails = ({ project, index }) => {
                   </div>
                 ))}
               </div>
-              <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev" style={{ width: 44 }}>
-                <span className="carousel-control-prev-icon" aria-hidden="true" />
+              <button className="carousel-control-prev" type="button" data-bs-target={`#${id}`} data-bs-slide="prev">
+                <span className="carousel-btn" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="15 18 9 12 15 6" />
+                  </svg>
+                </span>
                 <span className="visually-hidden">Previous</span>
               </button>
-              <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next" style={{ width: 44 }}>
-                <span className="carousel-control-next-icon" aria-hidden="true" />
+              <button className="carousel-control-next" type="button" data-bs-target={`#${id}`} data-bs-slide="next">
+                <span className="carousel-btn" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="9 18 15 12 9 6" />
+                  </svg>
+                </span>
                 <span className="visually-hidden">Next</span>
               </button>
             </div>

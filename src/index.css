@@ -484,6 +484,35 @@
   /* ── Blog ── */
   .blog-section img { border-radius: 8px; }
   .client-header { color: var(--t1); font-weight: 600; }
+
+  /* ── Carousel controls ── */
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 44px;
+    opacity: 1;
+  }
+
+  .carousel-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 50%;
+    color: #111;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    transition: background 0.18s, box-shadow 0.18s;
+    cursor: pointer;
+  }
+
+  .carousel-btn:hover {
+    background: var(--ac);
+    border-color: var(--ac);
+    color: var(--ac-txt);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+  }
 }
 
 /* ─── Responsive ────────────────────────────────────────────────────────────── */
