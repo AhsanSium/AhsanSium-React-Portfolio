@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
-Sitemap: https://ahsan-sium1.web.app/sitemap.xml
+Sitemap: https://ahsansium.dev/sitemap.xml
